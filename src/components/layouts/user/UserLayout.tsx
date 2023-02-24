@@ -1,17 +1,21 @@
 import React, { FC } from "react";
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
+import Navbar from "./Navbar";
 
 interface PropsInterface {
-  children: JSX.Element[] | JSX.Element;
+  children: React.ReactNode;
 }
 
 const UserLayout: FC<PropsInterface> = (props) => {
   return (
     <>
       <Header />
-      <main>{props.children}</main>
-      <Footer />
+      <div className="bg-gray-100">
+        <Navbar />
+        <main className="container mx-auto">{props.children}</main>
+        <Footer />
+      </div>
     </>
   );
 };
