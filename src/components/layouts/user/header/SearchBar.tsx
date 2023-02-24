@@ -1,0 +1,34 @@
+import { Category } from "@/models/Category";
+import React, { FC } from "react";
+
+const SearchBar: FC = () => {
+  const categories: Category[] = [
+    { id: 1, name: "All Categories" },
+    { id: 2, name: "Technology" },
+    { id: 3, name: "Home" },
+  ];
+
+  return (
+    <div className="flex">
+      <input
+        type="text"
+        className=" border-2 border-r-0 border-primary rounded-l-lg px-1.5 py-1.5  focus:outline-none"
+        placeholder="Search"
+      />
+      <select className=" border-2 border-primary bg-white px-2 focus:outline-none">
+        {categories.map((category) => {
+          return (
+            <option key={category.id} value={category.name}>
+              {category.name}
+            </option>
+          );
+        })}
+      </select>
+      <button className="bg-primary text-white px-5 py-1.5 rounded-r-lg">
+        Search
+      </button>
+    </div>
+  );
+};
+
+export default SearchBar;
