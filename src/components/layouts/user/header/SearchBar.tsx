@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/commons/button/PrimaryButton";
 import { Category } from "@/models/Category";
 import React, { FC } from "react";
 
@@ -24,9 +25,12 @@ const SearchBar: FC = () => {
           );
         })}
       </select>
-      <button className="bg-primary text-white px-5 py-1.5 rounded-r-lg">
-        Search
-      </button>
+      {/* <button className="bg-primary text-white ">Search</button> */}
+
+      <PrimaryButton
+        title="Search"
+        customClass="px-5 py-1.5 rounded-l-none rounded-r-lg"
+      />
     </div>
   );
 };
