@@ -13,7 +13,7 @@ const UserLayout: FC<PropsInterface> = (props) => {
       <Header />
       <div className="bg-gray-100">
         <Navbar />
-        <main className="container mx-auto">{props.children}</main>
+        <main>{props.children}</main>
         <Footer />
       </div>
     </>

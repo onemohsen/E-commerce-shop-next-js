@@ -2,10 +2,11 @@ import React from "react";
 import Logo from "./header/Logo";
 import SearchBar from "./header/SearchBar";
 import Action from "./header/Action";
+import ContainerWrapper from "../../commons/wrapper/ContainerWrapper";
 
 const Header = () => {
   return (
-    <div className="container mx-auto h-[5.3rem] grid content-center">
+    <ContainerWrapper className="h-[5.3rem] grid content-center">
       <div className="grid grid-cols-3 items-center">
         <div className="flex justify-start">
           <Logo width={150} />
@@ -17,7 +18,7 @@ const Header = () => {
           <Action />
         </div>
       </div>
-    </div>
+    </ContainerWrapper>
   );
 };
 

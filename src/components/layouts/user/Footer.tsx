@@ -5,6 +5,7 @@ import Image from "next/image";
 import GooglePlayImage from "@/assets/images/google-play.jpg";
 import AppStoreImage from "@/assets/images/app-store.jpg";
 import SubFooter from "./footer/SubFooter";
+import ContainerWrapper from "../../commons/wrapper/ContainerWrapper";
 
 type footerLink = {
   title: string;
@@ -49,7 +50,7 @@ const Footer = () => {
 
   return (
     <div className="bg-white">
-      <div className=" container mx-auto">
+      <ContainerWrapper>
         <div className=" grid grid-cols-3 gap-4 justify-items-stretch py-10">
           <div className="justify-self-start space-y-3">
             <Logo />
@@ -77,11 +78,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ContainerWrapper>
       <div className="bg-gray-100 ">
-        <div className="container mx-auto">
+        <ContainerWrapper>
           <SubFooter />
-        </div>
+        </ContainerWrapper>
       </div>
     </div>
   );

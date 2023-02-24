@@ -1,15 +1,16 @@
 import React from "react";
 import Menu from "./navbar/Menu";
 import Language from "./navbar/Language";
+import ContainerWrapper from "../../commons/wrapper/ContainerWrapper";
 
 const Navbar = () => {
   return (
     <nav className="pt-0.5 ">
       <div className="bg-white">
-        <div className="container mx-auto flex justify-between py-3">
+        <ContainerWrapper className="flex justify-between py-3">
           <Menu />
           <Language />
-        </div>
+        </ContainerWrapper>
       </div>
     </nav>
   );
