@@ -9,5 +9,9 @@ export {default as Twitter} from './social/Twitter';
 export {default as Linkedin} from './social/Linkedin';
 export {default as Instagram} from './social/Instagram';
 export {default as Youtube} from './social/Youtube';
+export {default as Inventory} from './Inventory';
+export {default as Search} from './Search';
+export {default as Send} from './Send';
+export {default as Security} from './Security';
 
 
