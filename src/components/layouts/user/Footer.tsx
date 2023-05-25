@@ -38,6 +38,15 @@ const Footer = () => {
       ],
     },
     {
+      headerTitle: "Information",
+      items: [
+        { title: "Help Center", route: "/about-us" },
+        { title: "Money Refund", route: "/find-store" },
+        { title: "Shiping", route: "/categories" },
+        { title: "Contact US", route: "/blogs" },
+      ],
+    },
+    {
       headerTitle: "For users",
       items: [
         { title: "Login", route: "/login" },
@@ -51,8 +60,8 @@ const Footer = () => {
   return (
     <div className="bg-white">
       <ContainerWrapper>
-        <div className=" grid grid-cols-3 gap-4 justify-items-stretch py-10">
-          <div className="justify-self-start space-y-3">
+        <div className=" grid grid-cols-8 gap-4 justify-items-stretch py-10">
+          <div className="col-span-2 justify-self-start space-y-3">
             <Logo />
             <p>
               Best information about the company gies here but now lorem ipsum
@@ -60,7 +69,7 @@ const Footer = () => {
             </p>
             <Social />
           </div>
-          <div className="justify-self-center w-full flex justify-between">
+          <div className="col-span-5 w-full justify-self-center flex justify-between px-20">
             {footerLists.map((list) => (
               <ul key={list.headerTitle} className="space-y-2">
                 <li className="font-bold">{list.headerTitle}</li>
@@ -70,7 +79,7 @@ const Footer = () => {
               </ul>
             ))}
           </div>
-          <div className="justify-self-end ">
+          <div className="col-span-1 justify-self-end ">
             <span className="block mb-2 font-bold">Get app</span>
             <div className="space-y-3">
               <Image src={GooglePlayImage} alt="google play" />
