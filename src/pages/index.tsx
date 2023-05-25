@@ -2,6 +2,7 @@ import Subscribe from "@/components/commons/Subscribe";
 import RecommendedProducts from "@/components/commons/products/RecommendedProducts";
 import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
 import ExtraServices from "@/components/pages/index/extra-services/ExtraServices";
+import RequestSupplier from "@/components/pages/index/request-supplier/RequestSupplier";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,7 +12,8 @@ export default function Home() {
     <div>
       <ContainerWrapper className="py-20">
         <div className="space-y-10">
-          Home page
+          <div>Home page</div>
+          <RequestSupplier />
           <RecommendedProducts />
           <ExtraServices />
         </div>

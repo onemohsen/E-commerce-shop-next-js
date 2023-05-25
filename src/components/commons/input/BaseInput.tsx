@@ -1,6 +1,5 @@
+import { inputType } from "@/models/custom/InputType";
 import React, { FC } from "react";
-
-type inputType = "text" | "password";
 
 interface PropsInterface {
   type: inputType;
@@ -12,6 +11,8 @@ const BaseInput: FC<PropsInterface> = ({ type, ...rest }) => {
     type,
     ...rest,
   };
+
+  if (type === "textarea") return <textarea {...rest} />;
 
   return <input {...attributes} />;
 };
