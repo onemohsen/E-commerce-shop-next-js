@@ -1,81 +1,119 @@
 import PrimaryButton from "@/components/commons/button/PrimaryButton";
-import Input from "@/components/commons/input/Input";
-import SelectBox from "@/components/commons/input/SelectBox";
 import { useToast } from "@/hooks/useToast";
-import React, { MouseEvent, useState, ChangeEvent } from "react";
+import React from "react";
+
+import { Formik, FormikErrors, FormikHelpers, Form as Formk } from "formik";
+import * as Yup from "yup";
+import FieldFormik from "@/components/commons/formik/FieldFormik";
+
+interface MyFormInterface {
+  description: string;
+  quentity: string;
+  category?: string;
+}
 
 export default function Form() {
-  const classInpute = "border border-blue-200 rounded";
+  const inputClasses = "border border-blue-200 rounded";
 
   const options = ["pc", "laptop", "phone"];
-  type Options = (typeof options)[number];
 
-  const [form, setForm] = useState<{
-    description: string;
-    quentity: number | null;
-    category: Options;
-  }>({
+  const initialValues: MyFormInterface = {
     description: "",
-    quentity: null,
-    category: "",
+    quentity: "",
+    category: "laptop",
+  };
+
+  const validationSchema = Yup.object().shape({
+    description: Yup.string().min(8).required(),
+    quentity: Yup.number().required().min(1).max(10),
+    category: Yup.string().equals(options),
   });
 
   const { showToast } = useToast();
 
-  const formSubmitHandler = (event: MouseEvent) => {
-    event.preventDefault();
-    showToast("danger", `${form.description} ${form.quentity}`);
+  const formSubmitHandler = (
+    values: MyFormInterface,
+    actions: FormikHelpers<MyFormInterface>
+  ) => {
+    showToast("success", `data: ${JSON.stringify(values)}`);
+    actions.resetForm();
+  };
+
+  const showErrorMessages = (errors: FormikErrors<MyFormInterface>) => {
+    return (
+      Object.keys(errors).length > 0 && (
+        <div>
+          <span className="text-xs text-red-500 font-bold">Form Errors:</span>
+          <ul className="list-disc">
+            {Object.values(errors).map((value, index) => (
+              <li key={index} className="text-xs text-red-500">
+                {value}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    );
   };
 
   return (
-    <form className="bg-white rounded p-8 flex flex-col space-y-5">
-      <span>Send quote to suppliers</span>
-      <Input
-        type="text"
-        disabled
-        value="what item you need ?"
-        className={classInpute}
-      />
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values, actions) => {
+        formSubmitHandler(values, actions);
+        console.log(actions);
+      }}
+      validationSchema={validationSchema}
+    >
+      {({ errors }) => (
+        <Formk className="bg-white rounded p-8 flex flex-col space-y-5">
+          <span>Send quote to suppliers</span>
+          {showErrorMessages(errors)}
+          <FieldFormik
+            name=""
+            disabled
+            value="what item you need ?"
+            className={`${inputClasses} focus:outline-none p-2`}
+          />
+          <FieldFormik
+            as="textarea"
+            rows="3"
+            placeholder="Type more details"
+            name="description"
+            className={`${inputClasses} focus:outline-none p-2`}
+          />
+          <FieldFormik
+            type="number"
+            placeholder="Quantity"
+            name="quentity"
+            className={`${inputClasses} focus:outline-none p-2`}
+          />
+          <FieldFormik
+            as="select"
+            name="category"
+            className={`${inputClasses} bg-white focus:outline-none p-2`}
+          >
+            {options.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
+          </FieldFormik>
 
-      <Input
-        type="textarea"
-        rows="3"
-        className={classInpute}
-        placeholder="Type more details"
-        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setForm((prevState) => ({
-            ...prevState,
-            description: event.target.value,
-          }))
-        }
-      />
-
-      <div className="space-x-2">
-        <Input
-          type="number"
-          className={classInpute}
-          placeholder="Quantity"
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setForm((prevState) => ({
-              ...prevState,
-              quentity: +event.target.value,
-            }))
-          }
-        />
-
-        <SelectBox className={`${classInpute} bg-white focus:outline-none`}>
-          {options.map((item, index) => {
-            return <option key={index}>{item}</option>;
-          })}
-        </SelectBox>
-      </div>
-
-      <PrimaryButton
-        title="Send inquiry"
-        customClass="w-32"
-        type="button"
-        onClick={formSubmitHandler}
-      />
-    </form>
+          <PrimaryButton
+            title="Send inquiry"
+            customClass={`w-32 ${
+              Object.keys(errors).length > 0
+                ? "bg-gray-500 hover:bg-gray-500 cursor-default"
+                : ""
+            }`}
+            type="submit"
+            disabled={Object.keys(errors).length > 0}
+          />
+        </Formk>
+      )}
+    </Formik>
   );
 }
