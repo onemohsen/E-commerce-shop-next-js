@@ -6,18 +6,18 @@ import { Formik, FormikErrors, FormikHelpers, Form as Formk } from "formik";
 import * as Yup from "yup";
 import FieldFormik from "@/components/commons/formik/FieldFormik";
 
-interface MyFormInterface {
+interface RequestSupplierFormInterface {
   description: string;
   quentity: string;
   category?: string;
 }
 
 export default function Form() {
-  const inputClasses = "border border-blue-200 rounded";
+  const inputClasses = "border border-blue-200 rounded focus:outline-none p-2";
 
   const options = ["pc", "laptop", "phone"];
 
-  const initialValues: MyFormInterface = {
+  const initialValues: RequestSupplierFormInterface = {
     description: "",
     quentity: "",
     category: "laptop",
@@ -32,14 +32,16 @@ export default function Form() {
   const { showToast } = useToast();
 
   const formSubmitHandler = (
-    values: MyFormInterface,
-    actions: FormikHelpers<MyFormInterface>
+    values: RequestSupplierFormInterface,
+    actions: FormikHelpers<RequestSupplierFormInterface>
   ) => {
     showToast("success", `data: ${JSON.stringify(values)}`);
     actions.resetForm();
   };
 
-  const showErrorMessages = (errors: FormikErrors<MyFormInterface>) => {
+  const showErrorMessages = (
+    errors: FormikErrors<RequestSupplierFormInterface>
+  ) => {
     return (
       Object.keys(errors).length > 0 && (
         <div>

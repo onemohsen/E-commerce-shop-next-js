@@ -13,25 +13,13 @@ const FieldFormik: FC<PropsInterface> = ({
   showError,
   ...rest
 }) => {
-  const inputClasses = "border border-blue-200 rounded";
-
   let FieldComponent;
 
   if (!children) {
-    FieldComponent = (
-      <Field
-        name={name}
-        className={`${inputClasses} focus:outline-none p-2 `}
-        {...rest}
-      />
-    );
+    FieldComponent = <Field name={name} {...rest} />;
   } else {
     FieldComponent = (
-      <Field
-        name={name}
-        className={`${inputClasses} focus:outline-none p-2`}
-        {...rest}
-      >
+      <Field name={name} {...rest}>
         {children}
       </Field>
     );
