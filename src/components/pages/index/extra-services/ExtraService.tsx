@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import { ExtraServiceType } from "@/models/custom/ExtraServiceType";
+import { ExtraServiceType } from "@/components/pages/index/extra-services/ExtraServiceType";
 
 interface Props {
   item: ExtraServiceType;
