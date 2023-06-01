@@ -1,6 +1,7 @@
 import Subscribe from "@/components/commons/Subscribe";
 import RecommendedProducts from "@/components/commons/products/RecommendedProducts";
 import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
+import DealsOffers from "@/components/pages/index/deals-offers/DealsOffers";
 import ExtraServices from "@/components/pages/index/extra-services/ExtraServices";
 import { ProductCategories } from "@/components/pages/index/product-category/ProductCategories";
 import RequestSupplier from "@/components/pages/index/request-supplier/RequestSupplier";
@@ -14,7 +15,8 @@ export default function Home() {
       <ContainerWrapper className="py-20">
         <div className="space-y-5">
           <div>Home page</div>
-          <ProductCategories />
+          <DealsOffers className="w-full flex max-h-56" />
+          <ProductCategories className="w-full flex h-56" />
           <RequestSupplier />
           <RecommendedProducts />
           <ExtraServices />

@@ -7,7 +7,11 @@ import ImageRasm from "@/assets/images/home/prdocut-category/product/rasm.png";
 import { ProductCategoryBox } from "./ProductCategoryBox";
 import { ProductCategoryType } from "./ProductCategoryType";
 
-export const ProductCategories = () => {
+type Props = {
+  className?: string;
+};
+
+export const ProductCategories = ({ className }: Props) => {
   const categoriesWithProducts: ProductCategoryType[] = [
     {
       category: {
@@ -133,6 +137,7 @@ export const ProductCategories = () => {
           <ProductCategoryBox
             key={`${index}-${item.category.name}`}
             item={item}
+            className={className}
           />
         );
       })}
