@@ -2,7 +2,7 @@ import { Product } from "@/models/Product";
 import React from "react";
 import Image35 from "@/assets/images/home/deals-offers/image 35.jpg";
 import { ProductOfferCard } from "./ProductOfferCard";
-import CountDown from "./CountDown";
+import dynamic from "next/dynamic";
 
 type Props = {
   className: string;
@@ -29,6 +29,11 @@ export default function DealsOffers({ className }: Props) {
     { id: 5, image: Image35.src, price: 5, title: "test5", offer: 25 },
   ];
 
+  const CountDownComponent = dynamic(
+    () => import("@/components/pages/index/deals-offers/CountDown"),
+    { ssr: false }
+  );
+
   let fiveDaysLater = new Date(today);
   fiveDaysLater.setDate(today.getDate() + 5);
 
@@ -37,7 +42,7 @@ export default function DealsOffers({ className }: Props) {
       <div className="w-1/4 h-56 overflow overflow-hidden p-5 border bg-white">
         <p className="font-bold">Deals and offers</p>
         <span className="text-xs text-gray-400">Hygiene equipments</span>
-        <CountDown
+        <CountDownComponent
           date={fiveDaysLater}
           className="w-full flex space-x-1 mt-5"
         />

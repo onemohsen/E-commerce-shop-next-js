@@ -16,22 +16,22 @@ const CountDown = ({ date, className }: Props) => {
 
   return (
     <div className={`${className}`}>
-      <p className={boxClassName}>
+      <div className={boxClassName}>
         <span className={countDownClass}>{days}</span>
         <span className={textCountDownClass}>days</span>
-      </p>
-      <p className={boxClassName}>
+      </div>
+      <div className={boxClassName}>
         <span className={countDownClass}>{hours}</span>
         <span className={textCountDownClass}>hour</span>
-      </p>
-      <p className={boxClassName}>
+      </div>
+      <div className={boxClassName}>
         <span className={countDownClass}>{minutes}</span>
         <span className={textCountDownClass}>min</span>
-      </p>
-      <p className={boxClassName}>
+      </div>
+      <div className={boxClassName}>
         <span className={countDownClass}>{seconds}</span>
         <span className={textCountDownClass}>sec</span>
-      </p>
+      </div>
     </div>
   );
 };
