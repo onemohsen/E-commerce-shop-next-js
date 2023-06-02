@@ -13,8 +13,8 @@ type Props = {
 export const ProductOfferCard = ({ item, className }: Props) => {
   return (
     <div className={`${className}`}>
-      <div className="w-full flex justify-center">
-        <Image src={item.image} alt={item.title} width={90} height={90} />
+      <div className="w-full flex justify-center max-h-[120px]">
+        <Image src={item.image} alt={item.title} width={120} height={120} />
       </div>
       <div className="w-full space-y-1 text-center">
         <span title={item.title} className="block truncate">

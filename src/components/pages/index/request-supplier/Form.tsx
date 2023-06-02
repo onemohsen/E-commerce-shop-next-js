@@ -63,12 +63,11 @@ export default function Form() {
       initialValues={initialValues}
       onSubmit={(values, actions) => {
         formSubmitHandler(values, actions);
-        console.log(actions);
       }}
       validationSchema={validationSchema}
     >
       {({ errors }) => (
-        <Formk className="bg-white rounded p-8 flex flex-col space-y-5">
+        <Formk className="bg-white rounded  p-8 flex flex-col space-y-6">
           <span>Send quote to suppliers</span>
           {showErrorMessages(errors)}
           <FieldFormik
@@ -79,30 +78,32 @@ export default function Form() {
           />
           <FieldFormik
             as="textarea"
-            rows="3"
+            rows="2"
             placeholder="Type more details"
             name="description"
             className={`${inputClasses} focus:outline-none p-2`}
           />
-          <FieldFormik
-            type="number"
-            placeholder="Quantity"
-            name="quentity"
-            className={`${inputClasses} focus:outline-none p-2`}
-          />
-          <FieldFormik
-            as="select"
-            name="category"
-            className={`${inputClasses} bg-white focus:outline-none p-2`}
-          >
-            {options.map((item, index) => {
-              return (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </FieldFormik>
+          <div className="space-x-3">
+            <FieldFormik
+              type="number"
+              placeholder="Quantity"
+              name="quentity"
+              className={`${inputClasses} focus:outline-none p-2 w-2/5`}
+            />
+            <FieldFormik
+              as="select"
+              name="category"
+              className={`${inputClasses} bg-white focus:outline-none p-2 w-1/5`}
+            >
+              {options.map((item, index) => {
+                return (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                );
+              })}
+            </FieldFormik>
+          </div>
 
           <PrimaryButton
             title="Send inquiry"

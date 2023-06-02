@@ -23,10 +23,34 @@ export default function DealsOffers({ className }: Props) {
       title: "Smart watches",
       offer: 25,
     },
-    { id: 2, image: Image35.src, price: 2, title: "test2", offer: 25 },
-    { id: 3, image: Image35.src, price: 3, title: "test3", offer: 25 },
-    { id: 4, image: Image35.src, price: 4, title: "test4", offer: 25 },
-    { id: 5, image: Image35.src, price: 5, title: "test5", offer: 25 },
+    {
+      id: 2,
+      image: "https://picsum.photos/id/22/300",
+      price: 2,
+      title: "test2",
+      offer: 25,
+    },
+    {
+      id: 3,
+      image: "https://picsum.photos/id/23/300",
+      price: 3,
+      title: "test3",
+      offer: 25,
+    },
+    {
+      id: 4,
+      image: "https://picsum.photos/id/24/300",
+      price: 4,
+      title: "test4",
+      offer: 25,
+    },
+    {
+      id: 5,
+      image: "https://picsum.photos/id/35/300",
+      price: 5,
+      title: "test5",
+      offer: 25,
+    },
   ];
 
   const CountDownComponent = dynamic(

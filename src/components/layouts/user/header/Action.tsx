@@ -10,7 +10,7 @@ const Action = () => {
   return (
     <div className="flex space-x-5 content-center">
       <div className="flex flex-col items-center space-y-2">
-        <Profile />
+        <Profile fill="#8B96A5" />
         <span className="text-xs text-gray-500">Profile</span>
       </div>
       <div className="flex flex-col items-center space-y-2">

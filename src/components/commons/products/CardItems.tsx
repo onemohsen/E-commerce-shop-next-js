@@ -1,11 +1,6 @@
 import React from "react";
 import CardItem from "./CardItem";
-
-type Product = {
-  image: string;
-  price: number;
-  summary: string;
-};
+import { Product } from "@/models/Product";
 
 interface Props {
   items: Product[];
@@ -17,7 +12,7 @@ function CardItems({ items, className }: Props) {
     <div className={className}>
       {items.map((item, index) => (
         /* TODO: key must be changed */
-        <CardItem key={index} item={item} />
+        <CardItem key={item.id} item={item} />
       ))}
     </div>
   );
