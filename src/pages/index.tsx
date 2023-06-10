@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div>
+    <>
       <ContainerWrapper className="py-5 space-y-5">
         <CategoriesSlide />
         <DealsOffers className="w-full flex max-h-56" />
@@ -24,6 +24,6 @@ export default function Home() {
       <div className="bg-gray-200 py-10">
         <Subscribe />
       </div>
-    </div>
+    </>
   );
 }

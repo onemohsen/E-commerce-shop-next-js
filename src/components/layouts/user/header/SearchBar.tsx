@@ -4,7 +4,6 @@ import React, { FC } from "react";
 
 const SearchBar: FC = () => {
   const categories: Category[] = [
-    { id: 1, name: "All Categories" },
     { id: 2, name: "Technology" },
     { id: 3, name: "Home" },
   ];
@@ -17,6 +16,7 @@ const SearchBar: FC = () => {
         placeholder="Search"
       />
       <select className=" border-2 border-primary bg-white px-2 focus:outline-none">
+        <option value="All Categories">All Categories</option>
         {categories.map((category) => {
           return (
             <option key={category.id} value={category.name}>
@@ -25,7 +25,6 @@ const SearchBar: FC = () => {
           );
         })}
       </select>
-      {/* <button className="bg-primary text-white ">Search</button> */}
 
       <PrimaryButton
         title="Search"
