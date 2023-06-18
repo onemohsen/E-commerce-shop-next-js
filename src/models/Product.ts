@@ -1,3 +1,5 @@
+import { Feature } from './Feature';
+import { Brand } from './Brand';
 import { Category } from './Category';
 
 export type Product = {
@@ -7,4 +9,6 @@ export type Product = {
     price: number,
     summary?: string,
     categories?: Category[],
+    brands?: Brand[],
+    features?: Feature[],
 }

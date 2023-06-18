@@ -24,8 +24,8 @@ export class FilterData<T extends { [key: string]: any }> {
                     const field = this.getFilterField(filterKey);
                     if (Array.isArray(item[filterKey])) {
                         let isEqual = false;
-                        item[filterKey].forEach((element: { [x: string]: string | string[] | undefined; }) => {
-                            if (element[field] == this.filters[filterKey]) {
+                        item[filterKey].forEach((element: { [x: string]: string; }) => {
+                            if (this.filters[filterKey]?.includes(element[field])) {
                                 return isEqual = true;
                             };
                         });

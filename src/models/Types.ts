@@ -13,3 +13,9 @@ export type DrowpdownItemType = {
     name: string;
     value: number;
 };
+
+
+export type DrowpdownType = {
+    header: string;
+    items: DrowpdownItemType[];
+};
