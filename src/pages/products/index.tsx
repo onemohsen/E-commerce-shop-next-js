@@ -3,16 +3,20 @@ import Subscribe from "@/components/commons/Subscribe";
 import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
 import { makeQueryParams } from "@/services/helpers";
 import { Product } from "@/models/Product";
-import { BreadcrumbsType, ProductFilterType } from "@/models/Types";
+import {
+  BreadcrumbsType,
+  MetaPaginate,
+  ProductFilterType,
+} from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
-import FilterHeader from "@/components/pages/products/index/FilterHeader";
 import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
 import FilterContent from "@/components/pages/products/index/FilterContent";
 
 type ServerProps = {
   products: Product[];
+  paginate?: MetaPaginate;
 };
 
 const filters: ProductFilterType[] = [
@@ -82,7 +86,7 @@ const filters: ProductFilterType[] = [
   },
 ];
 
-export default function Index({ products }: ServerProps) {
+export default function Index({ products, paginate }: ServerProps) {
   const breadcrumbs: BreadcrumbsType[] = [
     { name: "Home", href: "/" },
     { name: "Products" },
@@ -92,7 +96,11 @@ export default function Index({ products }: ServerProps) {
 
   const makeFilterQuery = (filter: ProductFilterType, values: number[]) => {
     const params = filter?.isCheckBox ? router.query : {};
-    const queryString = makeQueryParams(params, filter.header, values);
+    const queryString = makeQueryParams(
+      { ...params, page: 1 },
+      filter.header,
+      values
+    );
     router.push(`${location.pathname}${queryString}`);
   };
 
@@ -104,7 +112,7 @@ export default function Index({ products }: ServerProps) {
           <FilterSidebar items={filters} makeFilterQuery={makeFilterQuery} />
         </div>
         <div className="w-4/5 px-5">
-          <FilterContent products={products} />
+          <FilterContent products={products} paginate={paginate} />
         </div>
       </div>
 
@@ -125,11 +133,12 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
   try {
     const res = await fetch(url);
 
-    const { data } = await res.json();
+    const { data, meta } = await res.json();
 
     return {
       props: {
         products: data,
+        paginate: meta.paginate ?? undefined,
       },
     };
   } catch (error) {

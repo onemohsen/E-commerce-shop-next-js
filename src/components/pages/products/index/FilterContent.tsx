@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import ProductListCard from "./ProductListCard";
 import ProductGridCard from "./ProductGridCard";
 import FilterHeader from "./FilterHeader";
+import { MetaPaginate } from "@/models/Types";
+import Paginate from "@/components/commons/Paginate";
 
 type Props = {
   products: Product[];
+  paginate?: MetaPaginate;
 };
 
 const ProductsGrid = ({ products }: Props) => {
@@ -32,7 +35,7 @@ const ProductsList = ({ products }: Props) => {
   );
 };
 
-export default function FilterContent({ products }: Props) {
+export default function FilterContent({ products, paginate }: Props) {
   const [isGridView, setIsGridView] = useState(true);
 
   return (
@@ -40,9 +43,13 @@ export default function FilterContent({ products }: Props) {
       <FilterHeader
         isGrid={isGridView}
         onViewClickHandler={(isGrid) => setIsGridView(isGrid)}
+        total={paginate?.total}
       />
       {isGridView && <ProductsGrid products={products} />}
       {!isGridView && <ProductsList products={products} />}
+      {paginate && (
+        <Paginate className="flex justify-end space-x-3 mt-5" meta={paginate} />
+      )}
     </>
   );
 }

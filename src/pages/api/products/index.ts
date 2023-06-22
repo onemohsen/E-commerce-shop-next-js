@@ -1,8 +1,8 @@
+import { MetaRespone } from './../../../models/Types';
 import { JsonRespone } from "../../../models/Types";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Product } from "@/models/Product";
 import { FilterData } from "@/services/class/FilterData";
-import { features } from "process";
 
 
 export default function handler(
@@ -13,19 +13,27 @@ export default function handler(
     if (req.method !== "GET") res.status(404).json({ message: "only Get method is supported", statusCode: res.statusCode });
 
     let imageQuilty: string = '900';
+    let page: string = "1";
+    let perPage: string = "6";
 
     if (typeof req.query.imageQuilty == 'string') imageQuilty = req.query.imageQuilty.split(',')[0];
+    if (typeof req.query.page == 'string') page = req.query.page.split(',')[0];
+    if (typeof req.query.perPage == 'string') perPage = +req.query.perPage.split(',')[0] > 30 ? "30" : req.query.perPage.split(',')[0];
 
-    let filterDataInstance = new FilterData<Product>(getData(imageQuilty), { ...req.query });
 
-    let products: Product[] | [] = filterDataInstance.getData();
+    let filterDataInstance = new FilterData<Product>(getData(imageQuilty), { ...req.query, page, perPage });
 
+    let { data, meta }: { data: Product[] | [], meta: MetaRespone } = filterDataInstance.get();
+
+
+    const metaData = (typeof meta !== 'undefined') ? { meta } : {};
 
     const response: JsonRespone = {
-        data: products,
+        data: data,
         message: "products get successfully",
         statusCode: res.statusCode,
-    };
+        ...metaData,
+    }
 
 
     return res.json(response);

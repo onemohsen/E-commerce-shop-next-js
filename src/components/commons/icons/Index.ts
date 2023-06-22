@@ -18,5 +18,7 @@ export { default as Star } from './Star';
 export { default as Love } from './Love';
 export { default as Gridview } from './Gridview';
 export { default as Listview } from './Listview';
+export { default as ChervonLeft } from './ChervonLeft';
+export { default as ChervonRight } from './ChervonRight';
 
 

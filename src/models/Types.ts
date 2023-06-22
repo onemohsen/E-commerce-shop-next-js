@@ -1,7 +1,20 @@
+export type MetaRespone = {
+    paginate?: MetaPaginate
+};
+
+export type MetaPaginate = {
+    current_page: number,
+    from: number,
+    last_page: number,
+    per_page: number,
+    total: number,
+}
+
 export type JsonRespone = {
     data?: Array<unknown> | {},
     message: string,
-    statusCode: number
+    statusCode: number,
+    meta?: MetaRespone,
 };
 
 export type BreadcrumbsType = {
