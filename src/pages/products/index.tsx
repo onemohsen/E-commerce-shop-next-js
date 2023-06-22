@@ -1,28 +1,21 @@
 import Breadcrumbs from "@/components/commons/Breadcrumbs";
 import Subscribe from "@/components/commons/Subscribe";
 import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
-import Dropdown from "@/components/pages/categories/index/Dropdown";
-import { ProductCard } from "@/components/pages/index/product-category/ProductCard";
 import { makeQueryParams } from "@/services/helpers";
 import { Product } from "@/models/Product";
-import { BreadcrumbsType, DrowpdownItemType } from "@/models/Types";
+import { BreadcrumbsType, ProductFilterType } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
+import FilterHeader from "@/components/pages/products/index/FilterHeader";
+import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
+import FilterContent from "@/components/pages/products/index/FilterContent";
 
 type ServerProps = {
   products: Product[];
 };
 
-type FilterType = {
-  header: string;
-  show: boolean;
-  items: DrowpdownItemType[];
-  maxShowList?: number;
-  isCheckBox?: boolean;
-};
-
-const filters: FilterType[] = [
+const filters: ProductFilterType[] = [
   {
     header: "categories",
     maxShowList: 4,
@@ -97,7 +90,7 @@ export default function Index({ products }: ServerProps) {
 
   const router = useRouter();
 
-  const makeFilterQuery = (filter: FilterType, values: number[]) => {
+  const makeFilterQuery = (filter: ProductFilterType, values: number[]) => {
     const params = filter?.isCheckBox ? router.query : {};
     const queryString = makeQueryParams(params, filter.header, values);
     router.push(`${location.pathname}${queryString}`);
@@ -107,30 +100,11 @@ export default function Index({ products }: ServerProps) {
     <ContainerWrapper className="py-5 space-y-5">
       <Breadcrumbs items={breadcrumbs} />
       <div className="flex">
-        <div className="w-1/5 space-y-1">
-          {filters.map((filter, index) => (
-            <div key={`${filter.header}-${index}`}>
-              <p className="w-full border" />
-              <Dropdown
-                item={filter}
-                maxShowList={filter.maxShowList}
-                show={filter.show}
-                isCheckbox={
-                  Object.keys(filter).includes("isCheckBox")
-                    ? filter.isCheckBox
-                    : false
-                }
-                filterQuery={(values) => makeFilterQuery(filter, values)}
-              />
-            </div>
-          ))}
+        <div className="w-1/5 ">
+          <FilterSidebar items={filters} makeFilterQuery={makeFilterQuery} />
         </div>
-        <div>
-          <div className="w-4/5 bg-blue-400">
-            {products.map((product) => (
-              <ProductCard key={product.id} item={product} />
-            ))}
-          </div>
+        <div className="w-4/5 px-5">
+          <FilterContent products={products} />
         </div>
       </div>
 

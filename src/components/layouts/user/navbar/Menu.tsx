@@ -17,7 +17,7 @@ const Menu = () => {
 
       <ul className="flex space-x-5">
         <li>
-          <Link href={{ pathname: "/products" }}>All Category</Link>
+          <Link href={{ pathname: "/products" }}>All Products</Link>
         </li>
         {items.map((item: Menu) => {
           return <li key={item.name}>{item.name}</li>;

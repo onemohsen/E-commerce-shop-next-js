@@ -19,3 +19,13 @@ export type DrowpdownType = {
     header: string;
     items: DrowpdownItemType[];
 };
+
+export type ShapeStartIconType = "full" | "half" | "empty";
+
+export type ProductFilterType = {
+    header: string;
+    show: boolean;
+    items: DrowpdownItemType[];
+    maxShowList?: number;
+    isCheckBox?: boolean;
+};

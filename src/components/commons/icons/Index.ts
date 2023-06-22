@@ -14,5 +14,9 @@ export { default as Inventory } from './Inventory';
 export { default as Search } from './Search';
 export { default as Send } from './Send';
 export { default as Security } from './Security';
+export { default as Star } from './Star';
+export { default as Love } from './Love';
+export { default as Gridview } from './Gridview';
+export { default as Listview } from './Listview';
 
 
