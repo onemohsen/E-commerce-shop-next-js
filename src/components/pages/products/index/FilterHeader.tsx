@@ -1,5 +1,7 @@
 import { Gridview, Listview } from "@/components/commons/icons/Index";
-import React from "react";
+import { ProductPageContext } from "@/state/products/ProductsPageContext";
+import { useRouter } from "next/router";
+import React, { useContext } from "react";
 
 type Props = {
   isGrid: boolean;
@@ -14,11 +16,21 @@ export default function FilterHeader({
 }: Props) {
   let iconClass = "w-8 h-8 border rounded-r p-1 cursor-pointer";
 
+  const { categories } = useContext(ProductPageContext);
+  const { query } = useRouter();
+
+  const activeCategory = categories.find((category) => {
+    const queryParamCateory = query.categories?.toString().split(",")[0] ?? 0;
+    return category.id == queryParamCateory;
+  });
+
   return (
     <div className="bg-white p-4 mb-2 flex justify-between">
       <div>
-        <span>{total} items in this</span>
-        <span className="font-bold"> Category</span>
+        <span>{total} items in </span>
+        <span className="font-bold">
+          {activeCategory?.name ?? "this category"}
+        </span>
       </div>
       <div className="flex">
         <Gridview

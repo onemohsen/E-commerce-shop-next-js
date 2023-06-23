@@ -23,7 +23,7 @@ export default function DropdownList({ item }: Props) {
 
   const ListItem = ({ item }: { item: DrowpdownItemType }) => {
     const activeItemClass =
-      query?.categories == item.value?.toString()
+      query?.categories == item.id?.toString()
         ? "bg-blue-500 text-white rounded"
         : "";
 
@@ -31,7 +31,7 @@ export default function DropdownList({ item }: Props) {
       <li
         className={`py-1.5 px-1 cursor-pointer hover:bg-blue-100 ${activeItemClass}`}
         onClick={(event) => listClickHandler(event)}
-        value={item.value}
+        value={item.id}
       >
         {item.name}
       </li>

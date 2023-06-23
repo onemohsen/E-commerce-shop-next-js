@@ -10,58 +10,34 @@ import {
 } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { createContext } from "react";
 import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
 import FilterContent from "@/components/pages/products/index/FilterContent";
+import { Category } from "@/models/Category";
+import { Brand } from "@/models/Brand";
+import { ProductPageContext } from "@/state/products/ProductsPageContext";
 
 type ServerProps = {
   products: Product[];
   paginate?: MetaPaginate;
+  categories: Category[];
+  brands: Brand[];
 };
 
-const filters: ProductFilterType[] = [
-  {
-    header: "categories",
-    maxShowList: 4,
-    show: true,
-    items: [
-      { name: "Mobile accessory", value: 1 },
-      { name: "Electronics", value: 2 },
-      { name: "Smartphones", value: 3 },
-      { name: "Modern tech", value: 4 },
-      { name: "test1", value: 5 },
-      { name: "test2", value: 6 },
-      { name: "test3", value: 7 },
-    ],
-  },
-  {
-    header: "brands",
-    maxShowList: 5,
-    show: true,
-    isCheckBox: true,
-    items: [
-      { name: "Samsung", value: 1 },
-      { name: "Apple", value: 2 },
-      { name: "Huawei", value: 3 },
-      { name: "Pocco", value: 4 },
-      { name: "Lenovo", value: 5 },
-      { name: "test2", value: 6 },
-      { name: "test3", value: 7 },
-    ],
-  },
+let staticFilters: ProductFilterType[] = [
   {
     header: "features",
     maxShowList: 5,
     show: true,
     isCheckBox: true,
     items: [
-      { name: "Metallic", value: 1 },
-      { name: "Plastic cover", value: 2 },
-      { name: "8GB Ram", value: 3 },
-      { name: "Super power", value: 4 },
-      { name: "Large Memory", value: 5 },
-      { name: "test2", value: 6 },
-      { name: "test3", value: 7 },
+      { name: "Metallic", id: 1 },
+      { name: "Plastic cover", id: 2 },
+      { name: "8GB Ram", id: 3 },
+      { name: "Super power", id: 4 },
+      { name: "Large Memory", id: 5 },
+      { name: "test2", id: 6 },
+      { name: "test3", id: 7 },
     ],
   },
   {
@@ -86,10 +62,32 @@ const filters: ProductFilterType[] = [
   },
 ];
 
-export default function Index({ products, paginate }: ServerProps) {
+export default function Index({
+  products,
+  paginate,
+  categories,
+  brands,
+}: ServerProps) {
   const breadcrumbs: BreadcrumbsType[] = [
     { name: "Home", href: "/" },
     { name: "Products" },
+  ];
+
+  const filters = [
+    {
+      header: "categories",
+      maxShowList: 4,
+      show: true,
+      items: categories,
+    },
+    {
+      header: "brands",
+      maxShowList: 5,
+      show: true,
+      isCheckBox: true,
+      items: brands,
+    },
+    ...staticFilters,
   ];
 
   const router = useRouter();
@@ -106,19 +104,21 @@ export default function Index({ products, paginate }: ServerProps) {
 
   return (
     <ContainerWrapper className="py-5 space-y-5">
-      <Breadcrumbs items={breadcrumbs} />
-      <div className="flex">
-        <div className="w-1/5 ">
-          <FilterSidebar items={filters} makeFilterQuery={makeFilterQuery} />
+      <ProductPageContext.Provider value={{ categories, products, brands }}>
+        <Breadcrumbs items={breadcrumbs} />
+        <div className="flex">
+          <div className="w-1/5 ">
+            <FilterSidebar items={filters} makeFilterQuery={makeFilterQuery} />
+          </div>
+          <div className="w-4/5 px-5">
+            <FilterContent products={products} paginate={paginate} />
+          </div>
         </div>
-        <div className="w-4/5 px-5">
-          <FilterContent products={products} paginate={paginate} />
-        </div>
-      </div>
 
-      <div className="bg-gray-200 py-10">
-        <Subscribe />
-      </div>
+        <div className="bg-gray-200 py-10">
+          <Subscribe />
+        </div>
+      </ProductPageContext.Provider>
     </ContainerWrapper>
   );
 }
@@ -128,17 +128,27 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
 }) => {
   const queryString = makeQueryParams(query);
 
-  const url = `http://localhost:3000/api/products${queryString}`;
+  const baseUrl = process.env.BASE_API_URL || "http://localhost:3000/api";
 
   try {
-    const res = await fetch(url);
+    const [productsRes, categoroesRes, brandsRes] = await Promise.all([
+      fetch(`${baseUrl}/products${queryString}`),
+      fetch(`${baseUrl}/categories`),
+      fetch(`${baseUrl}/brands`),
+    ]);
 
-    const { data, meta } = await res.json();
+    const [products, categories, brands] = await Promise.all([
+      productsRes.json(),
+      categoroesRes.json(),
+      brandsRes.json(),
+    ]);
 
     return {
       props: {
-        products: data,
-        paginate: meta.paginate ?? undefined,
+        products: products.data,
+        paginate: products.meta?.paginate ?? undefined,
+        categories: categories.data,
+        brands: brands.data,
       },
     };
   } catch (error) {

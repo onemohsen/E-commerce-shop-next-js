@@ -48,13 +48,13 @@ export default function DropdownCheckbox({ item }: Props) {
   return (
     <>
       {item.items.slice(0, maxItems).map((i, index) => (
-        <div className="py-1.5" key={`${item.header}-${i.value}-${i.value}`}>
+        <div className="py-1.5" key={`${item.header}-${i.id}-${i.id}`}>
           <input
             id={`${item.header}-${index}`}
             type="checkbox"
             name={`${item.header}[]`}
-            value={i.value}
-            checked={checkBoxValue.includes(i.value) ? true : false}
+            value={i.id}
+            checked={checkBoxValue.includes(i.id) ? true : false}
             onChange={checkboxChangeHandler}
           />
           <label htmlFor={`${item.header}-${index}`} className="pl-1">

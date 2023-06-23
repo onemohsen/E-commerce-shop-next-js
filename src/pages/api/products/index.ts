@@ -1,8 +1,9 @@
+import { QueryParamsClass } from './../../../services/class/QueryParamsClass';
 import { MetaRespone } from './../../../models/Types';
 import { JsonRespone } from "../../../models/Types";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Product } from "@/models/Product";
-import { FilterData } from "@/services/class/FilterData";
+import { FilterDataClass } from "@/services/class/FilterDataClass";
 
 
 export default function handler(
@@ -12,19 +13,11 @@ export default function handler(
 
     if (req.method !== "GET") res.status(404).json({ message: "only Get method is supported", statusCode: res.statusCode });
 
-    let imageQuilty: string = '900';
-    let page: string = "1";
-    let perPage: string = "6";
+    const { imageQuilty, page, perPage } = (new QueryParamsClass(req.query, { perPage: "6" })).getParams();
 
-    if (typeof req.query.imageQuilty == 'string') imageQuilty = req.query.imageQuilty.split(',')[0];
-    if (typeof req.query.page == 'string') page = req.query.page.split(',')[0];
-    if (typeof req.query.perPage == 'string') perPage = +req.query.perPage.split(',')[0] > 30 ? "30" : req.query.perPage.split(',')[0];
-
-
-    let filterDataInstance = new FilterData<Product>(getData(imageQuilty), { ...req.query, page, perPage });
+    let filterDataInstance = new FilterDataClass<Product>(getData(imageQuilty!), { ...req.query, page, perPage });
 
     let { data, meta }: { data: Product[] | [], meta: MetaRespone } = filterDataInstance.get();
-
 
     const metaData = (typeof meta !== 'undefined') ? { meta } : {};
 

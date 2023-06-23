@@ -1,5 +1,5 @@
-import { MetaPaginate } from './../../models/Types';
-export class FilterData<T extends { [key: string]: any }> {
+import { MetaPaginate } from '../../models/Types';
+export class FilterDataClass<T extends { [key: string]: any }> {
     private data;
     private filters;
     private meta: { paginate?: MetaPaginate | undefined };

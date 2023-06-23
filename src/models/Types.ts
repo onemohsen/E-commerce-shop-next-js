@@ -23,8 +23,8 @@ export type BreadcrumbsType = {
 }
 
 export type DrowpdownItemType = {
+    id: number;
     name: string;
-    value: number;
 };
 
 
