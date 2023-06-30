@@ -1,57 +1,37 @@
-import { ArrowDown, ArrowUp } from "@/components/commons/icons/Index";
-import { DrowpdownType } from "@/models/Types";
-import React, { createContext, useState } from "react";
+import { ProductFilterType } from "@/models/Types";
+import React from "react";
 import DropdownList from "./DropdownList";
 import DropdownCheckbox from "./DropdownCheckbox";
-import { DropdowContext } from "@/state/products/DropdownContex";
+import { makeQueryParams } from "@/services/helpers";
+import { useRouter } from "next/router";
 
 type Props = {
-  item: DrowpdownType;
-  maxShowList?: number;
-  show?: boolean;
-  isCheckbox?: boolean;
-  filterQuery: (query: number[]) => void;
+  header: string;
+  item: ProductFilterType;
 };
 
-export default function Dropdown({
-  item,
-  maxShowList = 4,
-  show = true,
-  isCheckbox = false,
-  filterQuery,
-}: Props) {
-  const [maxItems, setMaxItems] = useState(maxShowList);
-  const [showDropdown, setShowDropdown] = useState<boolean>(show);
+export default function Dropdown({ header, item }: Props) {
+  const router = useRouter();
+  const { isCheckBox } = item;
 
-  const buildItems = () => {
-    if (!showDropdown) return;
+  const filterQuery = (values: number[]) => {
+    const params = isCheckBox ? router.query : {};
+    const queryString = makeQueryParams({ ...params, page: 1 }, header, values);
+    router.push(`${location.pathname}${queryString}`);
+  };
 
-    if (isCheckbox) return <DropdownCheckbox item={item} />;
-
-    return <DropdownList item={item} />;
+  const getProperites = () => {
+    return {
+      header,
+      item,
+      onClickHandler: (values: number[]) => filterQuery(values),
+    };
   };
 
   return (
-    <DropdowContext.Provider
-      value={{
-        showDropdown,
-        setShowDropdown,
-        maxItems,
-        setMaxItems,
-        filterQuery,
-      }}
-    >
-      <ul className="space-y-1">
-        <li
-          className="font-bold flex justify-between items-center py-3 cursor-pointer"
-          onClick={() => setShowDropdown((prev) => !prev)}
-        >
-          <span>{item.header}</span>
-          {showDropdown && <ArrowUp className="mr-5" />}
-          {!showDropdown && <ArrowDown className="mr-5" />}
-        </li>
-        {buildItems()}
-      </ul>
-    </DropdowContext.Provider>
+    <>
+      {isCheckBox && <DropdownCheckbox {...getProperites()} />}
+      {!isCheckBox && <DropdownList {...getProperites()} />}
+    </>
   );
 }

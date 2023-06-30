@@ -115,7 +115,7 @@ const getData: (imageQuilty: string) => Product[] = (imageQuilty = '500') => [
         ],
         brands: [
             {
-                id: 2,
+                id: 3,
                 'name': 'Huawei'
             }
         ]

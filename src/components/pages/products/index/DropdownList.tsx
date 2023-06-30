@@ -1,31 +1,31 @@
-import { DrowpdownItemType, DrowpdownType } from "@/models/Types";
-import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import { DrowpdownItemType, ProductFilterType } from "@/models/Types";
+import React, { useState } from "react";
 import DropdownLessAndMore from "./DropdownLessAndMore";
-import { DropdowContext } from "@/state/products/DropdownContex";
+import DropdownHeader from "./DropdownHeader";
 
 type Props = {
-  item: DrowpdownType;
+  header: string;
+  item: ProductFilterType;
+  onClickHandler: (value: number[]) => void;
 };
 
-export default function DropdownList({ item }: Props) {
-  const { query } = useRouter();
+export default function DropdownList({ header, item, onClickHandler }: Props) {
+  const { maxShowList, show, selected, items } = item;
+  const selectedList = selected;
 
-  const { maxItems, filterQuery } = useContext(DropdowContext);
+  const [maxItems, setMaxItems] = useState(maxShowList ?? 0);
+  const [showDropdown, setShowDropdown] = useState<boolean>(show);
 
   const listClickHandler = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
     let value = event.currentTarget.getAttribute("value");
-    let values = value ? [+value] : [];
-    filterQuery(values);
+    onClickHandler(value ? [+value] : []);
   };
 
   const ListItem = ({ item }: { item: DrowpdownItemType }) => {
-    const activeItemClass =
-      query?.categories == item.id?.toString()
-        ? "bg-blue-500 text-white rounded"
-        : "";
+    const isActive = selectedList.includes(item.id?.toString());
+    const activeItemClass = isActive ? "bg-blue-500 text-white rounded" : "";
 
     return (
       <li
@@ -38,13 +38,42 @@ export default function DropdownList({ item }: Props) {
     );
   };
 
+  const dropdownHeader = () => {
+    return (
+      <DropdownHeader
+        header={header}
+        showDropdown={showDropdown}
+        onClickHandler={() => setShowDropdown((prev) => !prev)}
+      />
+    );
+  };
+
+  if (!showDropdown) {
+    return dropdownHeader();
+  }
+
   return (
-    <>
-      {item.items.slice(0, maxItems).map((i, index) => (
+    <ul className="space-y-1">
+      {dropdownHeader()}
+
+      {items.slice(0, maxItems).map((i, index) => (
         <ListItem item={i} key={index} />
       ))}
 
-      <DropdownLessAndMore item={item} />
-    </>
+      {items.length > 0 && (
+        <DropdownLessAndMore
+          showMore={maxItems != items.length}
+          onClickHandler={() => {
+            maxItems == maxShowList
+              ? setMaxItems(items.length)
+              : setMaxItems(4);
+          }}
+        />
+      )}
+
+      {items.length == 0 && (
+        <span className="text-xs text-gray-400">filter empty</span>
+      )}
+    </ul>
   );
 }

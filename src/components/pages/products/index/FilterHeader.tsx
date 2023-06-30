@@ -16,10 +16,10 @@ export default function FilterHeader({
 }: Props) {
   let iconClass = "w-8 h-8 border rounded-r p-1 cursor-pointer";
 
-  const { categories } = useContext(ProductPageContext);
+  const { filtersData } = useContext(ProductPageContext);
   const { query } = useRouter();
 
-  const activeCategory = categories.find((category) => {
+  const activeCategory = filtersData.categories.items.find((category) => {
     const queryParamCateory = query.categories?.toString().split(",")[0] ?? 0;
     return category.id == queryParamCateory;
   });

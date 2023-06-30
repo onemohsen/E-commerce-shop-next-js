@@ -20,5 +20,6 @@ export { default as Gridview } from './Gridview';
 export { default as Listview } from './Listview';
 export { default as ChervonLeft } from './ChervonLeft';
 export { default as ChervonRight } from './ChervonRight';
+export { default as Clear } from './Clear';
 
 

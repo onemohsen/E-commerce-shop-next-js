@@ -111,13 +111,10 @@ export default function Paginate({ meta, ...rest }: Props) {
       <select
         className="flex items-center px-5 py-3 bg-white hover:bg-gray-100 border"
         onChange={changeHandler}
+        value={query.perPage}
       >
         {options.map((option, index) => (
-          <option
-            key={index}
-            value={option}
-            selected={query.perPage == option ? true : false}
-          >
+          <option key={index} value={option}>
             show {option}
           </option>
         ))}
