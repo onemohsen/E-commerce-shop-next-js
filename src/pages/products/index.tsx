@@ -2,22 +2,23 @@ import Breadcrumbs from "@/components/commons/Breadcrumbs";
 import Subscribe from "@/components/commons/Subscribe";
 import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
 import { makeQueryParams } from "@/services/helpers";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import { BreadcrumbsType, MetaPaginate } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useMemo } from "react";
 import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
 import FilterContent from "@/components/pages/products/index/FilterContent";
 import { Category } from "@/models/Category";
 import { Brand } from "@/models/Brand";
 import {
   ProductPageContext,
+  ProductPageProvider,
   initFiltersData,
 } from "@/state/products/ProductsPageContext";
 
 type ServerProps = {
-  products: Product[];
+  products: ProductType[];
   productPaginate?: MetaPaginate;
   categories: Category[];
   brands: Brand[];
@@ -33,8 +34,6 @@ export default function Index({
     { name: "Home", href: "/" },
     { name: "Products" },
   ];
-
-  console.count("product page load");
 
   const router = useRouter();
 
@@ -63,15 +62,13 @@ export default function Index({
   return (
     <ContainerWrapper className="py-5 space-y-5">
       <Breadcrumbs items={breadcrumbs} />
-      <ProductPageContext.Provider
-        value={{ products, productPaginate, filtersData }}
-      >
+      <ProductPageProvider values={{ products, productPaginate, filtersData }}>
         <div className="flex">
           <FilterSidebar />
           <FilterContent />
         </div>
-      </ProductPageContext.Provider>
-      <div className="bg-gray-200 py-10">
+      </ProductPageProvider>
+      <div className="py-10 bg-gray-200">
         <Subscribe />
       </div>
     </ContainerWrapper>
