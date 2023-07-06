@@ -1,25 +1,25 @@
 import { Love } from "@/components/commons/icons/Index";
 import RateBox from "@/components/commons/products/RateBox";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import React from "react";
 
 type Props = {
-  item: Product;
+  item: ProductType;
 };
 
 export default function ProductGridCard({ item }: Props) {
   return (
-    <div className="flex h-full w-full">
-      <div className="   flex flex-col mx-5 w-full ">
+    <div className="flex w-full h-full">
+      <div className="flex flex-col w-full mx-5 ">
         <div className="flex justify-center p-8">
           <Image src={item.image} width={200} height={200} alt={item.title} />
         </div>
-        <div className="border-b border-gray-200 w-full"></div>
+        <div className="w-full border-b border-gray-200"></div>
         <div className="p-4 space-y-2">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <span className="font-bold text-lg">${item.price}</span>
+              <span className="text-lg font-bold">${item.price}</span>
               {item.oldPrice && item.price < item.oldPrice && (
                 <span className="pl-2 text-gray-400 line-through">
                   ${item.oldPrice}

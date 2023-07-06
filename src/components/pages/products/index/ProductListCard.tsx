@@ -1,21 +1,21 @@
 import { Love } from "@/components/commons/icons/Index";
 import RateBox from "@/components/commons/products/RateBox";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  item: Product;
+  item: ProductType;
 };
 
 export default function ProductListCard({ item }: Props) {
   return (
     <div className="flex">
-      <div className="w-3/12 flex justify-center">
+      <div className="flex justify-center w-3/12">
         <Image src={item.image} width={180} height={180} alt={item.title} />
       </div>
-      <div className="w-9/12  ">
+      <div className="w-9/12 ">
         <div className="flex justify-between">
           <h2>{item.title}</h2>
           <Love
@@ -24,7 +24,7 @@ export default function ProductListCard({ item }: Props) {
           />
         </div>
         <div className="space-y-2">
-          <span className="font-bold text-xl">${item.price}</span>
+          <span className="text-xl font-bold">${item.price}</span>
           {item.oldPrice && item.price < item.oldPrice && (
             <span className="pl-2 text-gray-400 line-through">
               ${item.oldPrice}

@@ -1,4 +1,4 @@
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import React from "react";
 import Image35 from "@/assets/images/home/deals-offers/image 35.jpg";
 import { ProductOfferCard } from "./ProductOfferCard";
@@ -8,7 +8,7 @@ type Props = {
   className: string;
 };
 
-type OfferProduct = Product & {
+type OfferProduct = ProductType & {
   offer: number;
 };
 
@@ -63,20 +63,20 @@ export default function DealsOffers({ className }: Props) {
 
   return (
     <div className={`${className}`}>
-      <div className="w-1/4 h-56 overflow overflow-hidden p-5 border bg-white">
+      <div className="w-1/4 h-56 p-5 overflow-hidden bg-white border overflow">
         <p className="font-bold">Deals and offers</p>
         <span className="text-xs text-gray-400">Hygiene equipments</span>
         <CountDownComponent
           date={fiveDaysLater}
-          className="w-full flex space-x-1 mt-5"
+          className="flex w-full mt-5 space-x-1"
         />
       </div>
-      <div className="w-3/4 flex flex-wrap">
+      <div className="flex flex-wrap w-3/4">
         {offerProducts.map((item) => (
           <ProductOfferCard
             key={item.id}
             item={item}
-            className="w-1/5 bg-white p-4 border flex flex-col justify-between items-center  overflow-hidden "
+            className="flex flex-col items-center justify-between w-1/5 p-4 overflow-hidden bg-white border "
           />
         ))}
       </div>

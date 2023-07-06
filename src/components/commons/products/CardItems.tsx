@@ -1,9 +1,9 @@
 import React from "react";
 import CardItem from "./CardItem";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 
 interface Props {
-  items: Product[];
+  items: ProductType[];
   className?: string;
 }
 

@@ -1,4 +1,4 @@
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import React, { useContext, useState } from "react";
 import ProductListCard from "./ProductListCard";
 import ProductGridCard from "./ProductGridCard";
@@ -9,7 +9,7 @@ import CurrentFilters from "./CurrentFilters";
 import { ProductPageContext } from "@/state/products/ProductsPageContext";
 
 type Props = {
-  products: Product[];
+  products: ProductType[];
   paginate?: MetaPaginate;
 };
 
@@ -17,7 +17,7 @@ const ProductsGrid = ({ products }: Props) => {
   return (
     <div className="grid grid-cols-3 gap-5">
       {products.map((product) => (
-        <div key={product.id} className=" bg-white border rounded ">
+        <div key={product.id} className="bg-white border rounded ">
           <ProductGridCard item={product} />
         </div>
       ))}
@@ -29,7 +29,7 @@ const ProductsList = ({ products }: Props) => {
   return (
     <div className="space-y-2">
       {products.map((product) => (
-        <div key={product.id} className=" bg-white border rounded p-5">
+        <div key={product.id} className="p-5 bg-white border rounded ">
           <ProductListCard item={product} />
         </div>
       ))}
@@ -57,7 +57,7 @@ export default function FilterContent() {
 
       {productPaginate && (
         <Paginate
-          className="flex justify-end space-x-3 mt-5"
+          className="flex justify-end mt-5 space-x-3"
           meta={productPaginate}
         />
       )}

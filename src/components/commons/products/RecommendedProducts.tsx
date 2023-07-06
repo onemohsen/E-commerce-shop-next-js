@@ -1,9 +1,9 @@
 import React from "react";
 import CardItems from "./CardItems";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 
 function RecommendedProducts() {
-  const items: Product[] = [
+  const items: ProductType[] = [
     {
       id: 1,
       title: "product",
@@ -78,7 +78,7 @@ function RecommendedProducts() {
 
   return (
     <div>
-      <h3 className="font-bold text-lg pb-5">Recommended Items</h3>
+      <h3 className="pb-5 text-lg font-bold">Recommended Items</h3>
       <CardItems items={items} className="grid grid-cols-5 gap-5" />
     </div>
   );

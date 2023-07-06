@@ -1,10 +1,10 @@
 // @flow
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import * as React from "react";
 
 type Props = {
-  item: Product;
+  item: ProductType;
   className?: string;
 };
 export const ProductCard = ({ item, className }: Props) => {
@@ -13,7 +13,7 @@ export const ProductCard = ({ item, className }: Props) => {
       <div className="flex justify-between ">
         <div className="flex flex-col text-xs text-gray-400">
           <p
-            className=" text-black text-lg mb-4 truncate w-24"
+            className="w-24 mb-4 text-lg text-black truncate "
             title={item.title}
           >
             {item.title}

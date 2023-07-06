@@ -8,7 +8,7 @@ export default function FilterSidebar({}: Props) {
   const { filtersData } = useContext(ProductPageContext);
 
   return (
-    <div className="flex-inline w-1/5 space-y-1">
+    <div className="w-1/5 space-y-1 flex-inline">
       {Object.keys(filtersData).map((key, index) => {
         return (
           <div key={`${key}-${index}`}>

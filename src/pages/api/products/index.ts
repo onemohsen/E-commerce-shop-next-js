@@ -2,7 +2,7 @@ import { QueryParamsClass } from './../../../services/class/QueryParamsClass';
 import { MetaRespone } from './../../../models/Types';
 import { JsonRespone } from "../../../models/Types";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import { FilterDataClass } from "@/services/class/FilterDataClass";
 
 
@@ -35,7 +35,7 @@ export default function handler(
 
 
 
-const getData: (imageQuilty: string) => Product[] = (imageQuilty = '500') => [
+const getData: (imageQuilty: string) => ProductType[] = (imageQuilty = '500') => [
     {
         id: 1,
         summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua",

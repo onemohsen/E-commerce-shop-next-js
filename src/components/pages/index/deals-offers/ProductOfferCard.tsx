@@ -1,8 +1,8 @@
-import { Product } from "@/models/Product";
+import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import * as React from "react";
 
-type OfferProduct = Product & {
+type OfferProduct = ProductType & {
   offer: number;
 };
 
