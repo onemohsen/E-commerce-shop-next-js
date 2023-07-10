@@ -6,11 +6,10 @@ import FilterHeader from "./FilterHeader";
 import { MetaPaginate } from "@/models/Types";
 import Paginate from "@/components/commons/Paginate";
 import CurrentFilters from "./CurrentFilters";
-import { ProductPageContext } from "@/state/products/ProductsPageContext";
 
 type Props = {
   products: ProductType[];
-  paginate?: MetaPaginate;
+  productsPaginate?: MetaPaginate;
 };
 
 const ProductsGrid = ({ products }: Props) => {
@@ -37,17 +36,15 @@ const ProductsList = ({ products }: Props) => {
   );
 };
 
-export default function FilterContent() {
+export default function FilterContent({ products, productsPaginate }: Props) {
   const [isGridView, setIsGridView] = useState(true);
-
-  const { products, productPaginate } = useContext(ProductPageContext);
 
   return (
     <div className="w-4/5 px-5">
       <FilterHeader
         isGrid={isGridView}
         onViewClickHandler={(isGrid) => setIsGridView(isGrid)}
-        total={productPaginate?.total}
+        total={productsPaginate?.total}
       />
 
       <CurrentFilters />
@@ -55,10 +52,10 @@ export default function FilterContent() {
       {isGridView && <ProductsGrid products={products} />}
       {!isGridView && <ProductsList products={products} />}
 
-      {productPaginate && (
+      {productsPaginate && (
         <Paginate
           className="flex justify-end mt-5 space-x-3"
-          meta={productPaginate}
+          meta={productsPaginate}
         />
       )}
     </div>

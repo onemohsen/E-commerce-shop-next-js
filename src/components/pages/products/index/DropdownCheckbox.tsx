@@ -15,12 +15,11 @@ export default function DropdownCheckbox({
   onClickHandler,
 }: Props) {
   const { maxShowList, show, selected, items } = item;
+
   const itemChecked = selected.map((i) => +i);
 
   const [maxItems, setMaxItems] = useState(maxShowList ?? 0);
   const [showDropdown, setShowDropdown] = useState<boolean>(show);
-
-  console.count(`checkbox load ${header}`);
 
   const checkboxChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>

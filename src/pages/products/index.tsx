@@ -6,14 +6,13 @@ import { ProductType } from "@/models/Product";
 import { BreadcrumbsType, MetaPaginate } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
+import React from "react";
 import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
 import FilterContent from "@/components/pages/products/index/FilterContent";
 import { Category } from "@/models/Category";
 import { Brand } from "@/models/Brand";
 import {
   ProductPageContext,
-  ProductPageProvider,
   initFiltersData,
 } from "@/state/products/ProductsPageContext";
 
@@ -62,12 +61,15 @@ export default function Index({
   return (
     <ContainerWrapper className="py-5 space-y-5">
       <Breadcrumbs items={breadcrumbs} />
-      <ProductPageProvider values={{ products, productPaginate, filtersData }}>
+      <ProductPageContext.Provider value={{ filtersData: filtersData }}>
         <div className="flex">
           <FilterSidebar />
-          <FilterContent />
+          <FilterContent
+            products={products}
+            productsPaginate={productPaginate}
+          />
         </div>
-      </ProductPageProvider>
+      </ProductPageContext.Provider>
       <div className="py-10 bg-gray-200">
         <Subscribe />
       </div>

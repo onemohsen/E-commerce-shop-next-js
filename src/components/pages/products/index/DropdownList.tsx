@@ -9,9 +9,29 @@ type Props = {
   onClickHandler: (value: number[]) => void;
 };
 
+type ListItemProps = {
+  item: DrowpdownItemType;
+  selectedList: string[];
+  onClickHandler: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
+};
+
+const ListItem = ({ item, selectedList, onClickHandler }: ListItemProps) => {
+  const isActive = selectedList.includes(item.id?.toString());
+  const activeItemClass = isActive ? "bg-blue-500 text-white rounded" : "";
+
+  return (
+    <li
+      className={`py-1.5 px-1 cursor-pointer hover:bg-blue-100 ${activeItemClass}`}
+      onClick={(event) => onClickHandler(event)}
+      value={item.id}
+    >
+      {item.name}
+    </li>
+  );
+};
+
 export default function DropdownList({ header, item, onClickHandler }: Props) {
   const { maxShowList, show, selected, items } = item;
-  const selectedList = selected;
 
   const [maxItems, setMaxItems] = useState(maxShowList ?? 0);
   const [showDropdown, setShowDropdown] = useState<boolean>(show);
@@ -21,21 +41,6 @@ export default function DropdownList({ header, item, onClickHandler }: Props) {
   ) => {
     let value = event.currentTarget.getAttribute("value");
     onClickHandler(value ? [+value] : []);
-  };
-
-  const ListItem = ({ item }: { item: DrowpdownItemType }) => {
-    const isActive = selectedList.includes(item.id?.toString());
-    const activeItemClass = isActive ? "bg-blue-500 text-white rounded" : "";
-
-    return (
-      <li
-        className={`py-1.5 px-1 cursor-pointer hover:bg-blue-100 ${activeItemClass}`}
-        onClick={(event) => listClickHandler(event)}
-        value={item.id}
-      >
-        {item.name}
-      </li>
-    );
   };
 
   const dropdownHeader = () => {
@@ -57,7 +62,12 @@ export default function DropdownList({ header, item, onClickHandler }: Props) {
       {dropdownHeader()}
 
       {items.slice(0, maxItems).map((i, index) => (
-        <ListItem item={i} key={index} />
+        <ListItem
+          item={i}
+          key={`${header}-${index}`}
+          onClickHandler={listClickHandler}
+          selectedList={selected}
+        />
       ))}
 
       {items.length > 0 && (

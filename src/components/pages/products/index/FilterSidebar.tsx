@@ -6,7 +6,6 @@ type Props = {};
 
 export default function FilterSidebar({}: Props) {
   const { filtersData } = useContext(ProductPageContext);
-
   return (
     <div className="w-1/5 space-y-1 flex-inline">
       {Object.keys(filtersData).map((key, index) => {

@@ -1,31 +1,15 @@
-import { ProductType } from "@/models/Product";
-import { MetaPaginate, ProductFilterType } from "@/models/Types";
-import { Dispatch, SetStateAction, createContext } from "react";
-import React, { useState } from "react";
-
-type ActionType = {
-  setProducts: Dispatch<SetStateAction<ProductType[]>>;
-  setProductPaginate: Dispatch<SetStateAction<MetaPaginate | undefined>>;
-};
+import { ProductFilterType } from "@/models/Types";
+import { createContext } from "react";
 
 type ContexDataType = {
-  products: ProductType[];
-  productPaginate?: MetaPaginate;
   filtersData: {
     [key: string]: ProductFilterType;
   };
 };
 
-type InitContextType = ContexDataType & ActionType;
-
-type ProviderProps = {
-  children: React.ReactNode;
-  values: ContexDataType;
-};
+type InitContextType = ContexDataType;
 
 export const initFiltersData: InitContextType = {
-  products: [],
-  productPaginate: undefined,
   filtersData: {
     categories: {
       maxShowList: 4,
@@ -76,30 +60,7 @@ export const initFiltersData: InitContextType = {
       selected: [],
     },
   },
-  setProducts: () => {},
-  setProductPaginate: () => {},
 };
 
 export const ProductPageContext =
   createContext<InitContextType>(initFiltersData);
-
-export const ProductPageProvider = ({ children, values }: ProviderProps) => {
-  const [products, setProducts] = useState(values.products);
-  const [productPaginate, setProductPaginate] = useState(
-    values.productPaginate
-  );
-  const filtersData = values.filtersData;
-  return (
-    <ProductPageContext.Provider
-      value={{
-        products,
-        productPaginate,
-        filtersData,
-        setProducts,
-        setProductPaginate,
-      }}
-    >
-      {children}
-    </ProductPageContext.Provider>
-  );
-};

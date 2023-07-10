@@ -22,7 +22,7 @@ const Menu = () => {
         {items.map((item: Menu) => {
           return <li key={item.name}>{item.name}</li>;
         })}
-        <li className="dropdown flex space-x-2 items-center">
+        <li className="flex items-center space-x-2 dropdown">
           <span>Help</span>
           <ArrowDown />
         </li>
