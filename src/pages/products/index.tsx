@@ -112,3 +112,4 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
     }; */
   }
 };
+initFiltersData

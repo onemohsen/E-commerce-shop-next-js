@@ -3,13 +3,17 @@ import Clear from "./icons/Clear";
 
 type Props = {
   title: string;
+  closeHandler: () => void;
 };
 
-export default function Tag({ title }: Props) {
+export default function Tag({ title, closeHandler }: Props) {
   return (
     <div className=" h-8 pl-2.5 pr-1.5 py-1.5 bg-white rounded border border-blue-600 items-center inline-flex">
-      <div className="text-neutral-600  cursor-default">{title}</div>
-      <Clear className="w-5 h-5 relative cursor-pointer hover:text-blue-600" />
+      <div className="cursor-default text-neutral-600">{title}</div>
+      <Clear
+        className="relative w-5 h-5 cursor-pointer hover:fill-red-500"
+        onClick={closeHandler}
+      />
     </div>
   );
 }

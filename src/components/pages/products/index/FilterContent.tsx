@@ -39,6 +39,8 @@ const ProductsList = ({ products }: Props) => {
 export default function FilterContent({ products, productsPaginate }: Props) {
   const [isGridView, setIsGridView] = useState(true);
 
+  console.log(products);
+
   return (
     <div className="w-4/5 px-5">
       <FilterHeader
