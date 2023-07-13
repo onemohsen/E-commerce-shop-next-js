@@ -1,5 +1,4 @@
-import React, { FC, OptionHTMLAttributes, ReactElement } from "react";
-import BaseInput from "./BaseInput";
+import React, { FC, ReactElement } from "react";
 
 interface PropsInterface {
   label?: string;
@@ -35,7 +34,7 @@ const SelectBox: FC<PropsInterface> = ({
   const labelClass = label && `${labelClassName ?? ""} mr-2`;
 
   const hasRequiredAttribute = hasProp("required", rest);
-  const requiredJsx = <span className="text-red-500 mx-1">*</span>;
+  const requiredJsx = <span className="mx-1 text-red-500">*</span>;
 
   const labelInput = label && (
     <label htmlFor={idAttribute} className={labelClass}>

@@ -1,13 +1,15 @@
 import { MetaPaginate } from '../../models/Types';
 export class FilterDataClass<T extends { [key: string]: any }> {
     private data;
-    private filters;
     private meta: { paginate?: MetaPaginate | undefined };
+    private params;
+    private filters;
 
-    constructor(data: T[] | [], filters: { [key: string]: string | string[] | undefined } = {}) {
-        this.filters = filters;
+    constructor(data: T[] | [], params: { [key: string]: string | string[] | undefined } = {}, filters: { [key: string]: string } = {}) {
         this.data = data;
         this.meta = {};
+        this.params = params;
+        this.filters = filters;
     }
 
     private getFilterField(filter: string) {
@@ -21,18 +23,20 @@ export class FilterDataClass<T extends { [key: string]: any }> {
 
     private filtersData() {
 
-        if (Object.keys(this.filters).find(i => i === 'page')) this.setMetaPaginate();
+        if (Object.keys(this.params).find(i => i === 'page')) this.setMetaPaginate();
 
-        Object.keys(this.filters).forEach((filterKey) => {
+        const exceptParams = Object.keys(this.params).filter(i => !this.exceptParams().includes(i));
+
+        exceptParams.forEach((filterKey) => {
             this.data = this.data.filter(item => {
                 if (item && item[filterKey]) {
                     const field = this.getFilterField(filterKey);
                     if (Array.isArray(item[filterKey])) {
                         let isEqual = false;
                         item[filterKey].forEach((element: { [x: string]: string; }) => {
-                            if (this.filters[filterKey]?.includes(element[field])) {
+                            if (this.params[filterKey]?.includes(element[field])) {
                                 return isEqual = true;
-                            };
+                            }
                         });
                         return isEqual;
                     }
@@ -42,7 +46,7 @@ export class FilterDataClass<T extends { [key: string]: any }> {
                         typeof item[filterKey] === 'number' ||
                         typeof item[filterKey] === 'boolean'
                     ) {
-                        if (this.filters && item[filterKey][field] == this.filters[filterKey]) {
+                        if (this.params && item[filterKey][field] == this.params[filterKey]) {
                             return true;
                         }
                     }
@@ -52,14 +56,29 @@ export class FilterDataClass<T extends { [key: string]: any }> {
             });
         });
 
+        if (Object.keys(this.filters).length) {
+            Object.keys(this.filters).forEach((filterKey) => {
+                this.data = this.data.filter(data => {
+                    if (typeof this.filters[filterKey] == 'object') {
+                        return this.filters[filterKey].includes(data[filterKey].toString());
+                    }
+                    return data[filterKey] == this.filters[filterKey]
+                });
+            });
+        }
+
+        if (this.params.limit) [
+            this.data = this.data.slice(0, +this.params.limit)
+        ]
+
         if (this.meta.paginate) {
             this.paginateData();
         }
     }
 
     private setMetaPaginate() {
-        const page: number = + (this.filters.page as string);
-        const perPage: number = + (this.filters.perPage as string);
+        const page: number = + (this.params.page as string);
+        const perPage: number = + (this.params.perPage as string);
         const totalData = this.data.length;
         this.meta = {
             paginate: {
@@ -70,8 +89,6 @@ export class FilterDataClass<T extends { [key: string]: any }> {
                 total: totalData,
             }
         }
-        delete this.filters.page;
-        delete this.filters.perPage;
     }
 
     private paginateData() {
@@ -83,8 +100,12 @@ export class FilterDataClass<T extends { [key: string]: any }> {
         }
     }
 
+    private exceptParams(): string[] {
+        return ['paginate', 'page', 'perPage', 'limit', 'filter'];
+    }
+
     get() {
-        if (Object.keys(this.filters).length > 0) this.filtersData();
+        if (Object.keys(this.params).length > 0) this.filtersData();
 
         return {
             data: this.data,

@@ -1,5 +1,5 @@
 import { MetaPaginate } from "@/models/Types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChervonLeft, ChervonRight } from "./icons/Index";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -109,7 +109,7 @@ export default function Paginate({ meta, ...rest }: Props) {
 
     return (
       <select
-        className="flex items-center px-5 py-3 bg-white hover:bg-gray-100 border"
+        className="flex items-center px-5 py-3 bg-white border hover:bg-gray-100"
         onChange={changeHandler}
         value={query.perPage}
       >
@@ -128,7 +128,7 @@ export default function Paginate({ meta, ...rest }: Props) {
       <div {...rest}>
         {makeSelectPerpage()}
         <nav className="block">
-          <ul className="flex rounded list-none flex-wrap  items-center">
+          <ul className="flex flex-wrap items-center list-none rounded">
             <li>{makePrev()}</li>
             {makePage()}
             <li>{makeNext()}</li>

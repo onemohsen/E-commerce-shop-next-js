@@ -5,7 +5,7 @@ type Props = {
   [k: string]: any;
 };
 
-const Profile = ({ className, ...rest }: Props) => {
+const Profile = ({ ...rest }: Props) => {
   return (
     <svg
       width={19}

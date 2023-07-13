@@ -1,5 +1,5 @@
 import { ProductType } from "@/models/Product";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ProductListCard from "./ProductListCard";
 import ProductGridCard from "./ProductGridCard";
 import FilterHeader from "./FilterHeader";
@@ -38,8 +38,6 @@ const ProductsList = ({ products }: Props) => {
 
 export default function FilterContent({ products, productsPaginate }: Props) {
   const [isGridView, setIsGridView] = useState(true);
-
-  console.log(products);
 
   return (
     <div className="w-4/5 px-5">

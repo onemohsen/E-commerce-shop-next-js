@@ -2,6 +2,7 @@ import { Love } from "@/components/commons/icons/Index";
 import RateBox from "@/components/commons/products/RateBox";
 import { ProductType } from "@/models/Product";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -13,7 +14,14 @@ export default function ProductGridCard({ item }: Props) {
     <div className="flex w-full h-full">
       <div className="flex flex-col w-full mx-5 ">
         <div className="flex justify-center p-8">
-          <Image src={item.image} width={200} height={200} alt={item.title} />
+          <Link
+            href={{
+              pathname: "products/[id]",
+              query: { id: item.id },
+            }}
+          >
+            <Image src={item.image} width={200} height={200} alt={item.title} />
+          </Link>
         </div>
         <div className="w-full border-b border-gray-200"></div>
         <div className="p-4 space-y-2">

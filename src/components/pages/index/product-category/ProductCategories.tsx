@@ -3,7 +3,6 @@ import * as React from "react";
 
 import Image92 from "@/assets/images/home/prdocut-category/image 92.png";
 import Image98 from "@/assets/images/home/prdocut-category/image 98.png";
-import ImageRasm from "@/assets/images/home/prdocut-category/product/rasm.png";
 import { ProductCategoryBox } from "./ProductCategoryBox";
 import { ProductCategoryType } from "./ProductCategoryType";
 

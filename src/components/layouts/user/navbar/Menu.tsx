@@ -1,10 +1,10 @@
 import { ArrowDown, Menu as MenuIcon } from "@/components/commons/icons/Index";
-import { Menu } from "@/models/custom/Menu";
+import { MenuType } from "@/models/custom/MenuType";
 import Link from "next/link";
 import React from "react";
 
 const Menu = () => {
-  const items: Menu[] = [
+  const items: MenuType[] = [
     { name: "Hot Offers", route: "test" },
     { name: "Gift boxes", route: "test" },
     { name: "Projects", route: "test" },
@@ -19,7 +19,7 @@ const Menu = () => {
         <li>
           <Link href={{ pathname: "/products" }}>All Products</Link>
         </li>
-        {items.map((item: Menu) => {
+        {items.map((item: MenuType) => {
           return <li key={item.name}>{item.name}</li>;
         })}
         <li className="flex items-center space-x-2 dropdown">

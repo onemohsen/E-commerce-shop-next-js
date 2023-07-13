@@ -4,7 +4,6 @@ import { ProductPageContext } from "@/state/products/ProductsPageContext";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 
-type Props = {};
 type TagType = {
   dropdown: string;
   name: string;
@@ -31,14 +30,19 @@ const getAvailableFilterTags = (filtersData: {
   return tags;
 };
 
-export default function CurrentFilters({}: Props) {
+export default function CurrentFilters() {
   const { filtersData } = useContext(ProductPageContext);
 
   const router = useRouter();
 
   const tags = getAvailableFilterTags(filtersData);
 
-  const removeTag = (tag: TagType) => {
+  const removeTag = (tag?: TagType) => {
+    if (!tag) {
+      router.push({ query: {} });
+      return;
+    }
+
     const dropdown = tag.dropdown;
 
     const newItems = router.query[dropdown]
@@ -50,7 +54,7 @@ export default function CurrentFilters({}: Props) {
   };
 
   return (
-    <div className="my-5 space-x-2">
+    <div className="flex items-center my-5 space-x-2">
       {tags.map((tag) => (
         <Tag
           key={`${tag.dropdown}-${tag.value}`}
@@ -58,6 +62,14 @@ export default function CurrentFilters({}: Props) {
           closeHandler={() => removeTag(tag)}
         />
       ))}
+      {tags.length > 0 && (
+        <a
+          className="text-blue-600 cursor-pointer "
+          onClick={() => removeTag()}
+        >
+          Clear all filter
+        </a>
+      )}
     </div>
   );
 }

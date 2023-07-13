@@ -6,22 +6,22 @@ import DealsOffers from "@/components/pages/index/deals-offers/DealsOffers";
 import ExtraServices from "@/components/pages/index/extra-services/ExtraServices";
 import { ProductCategories } from "@/components/pages/index/product-category/ProductCategories";
 import RequestSupplier from "@/components/pages/index/request-supplier/RequestSupplier";
-import { Inter } from "@next/font/google";
+// import { Inter } from "@next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
       <ContainerWrapper className="py-5 space-y-5">
         <CategoriesSlide />
-        <DealsOffers className="w-full flex max-h-56" />
-        <ProductCategories className="w-full flex h-56" />
+        <DealsOffers className="flex w-full max-h-56" />
+        <ProductCategories className="flex w-full h-56" />
         <RequestSupplier />
         <RecommendedProducts />
         <ExtraServices />
       </ContainerWrapper>
-      <div className="bg-gray-200 py-10">
+      <div className="py-10 bg-gray-200">
         <Subscribe />
       </div>
     </>

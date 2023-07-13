@@ -84,7 +84,6 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
 
   const baseUrl = process.env.BASE_API_URL || "http://localhost:3000/api";
 
-  try {
     const [productsRes, categoroesRes, brandsRes] = await Promise.all([
       fetch(`${baseUrl}/products${queryString}`),
       fetch(`${baseUrl}/categories`),
@@ -94,7 +93,7 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
     const [products, categories, brands] = await Promise.all([
       productsRes.json(),
       categoroesRes.json(),
-      brandsRes.json(),
+    brandsRes.json(),
     ]);
 
     return {
@@ -105,11 +104,6 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
         brands: brands.data,
       },
     };
-  } catch (error) {
-    throw error;
-    /*  return {
-      notFound: true,
-    }; */
-  }
+  
 };
 initFiltersData

@@ -8,13 +8,13 @@ interface PropsInterface {
   [k: string]: any;
 }
 
-const PrimaryButton: FC<PropsInterface> = ({
+const LightButton: FC<PropsInterface> = ({
   title,
   onClick,
   customClass,
   ...rest
 }) => {
-  const primaryclass: string = `bg-primary hover:bg-blue-900 p-2 text-white rounded ${customClass}`;
+  const primaryclass: string = `bg-white hover:bg-gray-200 p-2 border  rounded ${customClass}`;
 
   return (
     <BaseButton onClick={onClick} buttonClass={primaryclass} {...rest}>
@@ -23,4 +23,4 @@ const PrimaryButton: FC<PropsInterface> = ({
   );
 };
 
-export default PrimaryButton;
+export default LightButton;

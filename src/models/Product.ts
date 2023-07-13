@@ -8,6 +8,7 @@ export type ProductType = {
     title: string,
     image: string,
     price: number,
+    quantity: number,
     oldPrice?: number,
     summary?: string,
     rate?: number,
@@ -23,6 +24,7 @@ export class Product extends Model {
     title: ProductType["title"] = "";
     image: ProductType["image"] = "";
     price: ProductType["price"] = 0;
+    quantity: ProductType["quantity"] = 0;
     oldPrice?: ProductType["oldPrice"];
     summary?: ProductType["summary"];
     rate?: ProductType["rate"];

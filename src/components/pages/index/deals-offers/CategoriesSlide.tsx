@@ -6,8 +6,6 @@ import PrimaryButton from "@/components/commons/button/PrimaryButton";
 import BaseButton from "@/components/commons/button/BaseButton";
 import Profile from "@/components/commons/icons/Profile";
 
-type Props = {};
-
 const categories: Category[] = [
   { id: 1, name: "Automobiles", image: Banner1.src },
   { id: 2, name: "Clothes and wear", image: "https://picsum.photos/id/2/900" },
@@ -24,7 +22,7 @@ const categories: Category[] = [
   { id: 9, name: "More category", image: "https://picsum.photos/id/9/900" },
 ];
 
-export default function CategoriesSlide({}: Props) {
+export default function CategoriesSlide() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const activeCategoryClass = (categoryId: number) => {
@@ -53,7 +51,7 @@ export default function CategoriesSlide({}: Props) {
 
   return (
     <div className="w-full flex bg-white p-4 space-x-3 max-h-[420px]">
-      <div className="w-1/6 flex flex-col space-y-1 ">
+      <div className="flex flex-col w-1/6 space-y-1 ">
         {categories.map((category) => (
           <a
             onClick={() => categoryClickHandler(category)}
@@ -64,7 +62,7 @@ export default function CategoriesSlide({}: Props) {
           </a>
         ))}
       </div>
-      <div className="w-4/6 relative overflow-hidden">
+      <div className="relative w-4/6 overflow-hidden">
         <Image
           src={activeCategory.image!}
           style={{ objectFit: "cover" }}
@@ -73,19 +71,19 @@ export default function CategoriesSlide({}: Props) {
           alt={activeCategory.name}
         />
         <div className="absolute top-12 left-10">
-          <div className="bg-white bg-opacity-20 rounded p-5 text-lg">
+          <div className="p-5 text-lg bg-white rounded bg-opacity-20">
             <p>Latest trending</p>
-            <p className="font-bold text-xl">{activeCategory.name}</p>
-            <button className=" px-3 py-1  mt-3 rounded text-sm bg-white hover:bg-gray-400 hover:text-white">
+            <p className="text-xl font-bold">{activeCategory.name}</p>
+            <button className="px-3 py-1 mt-3 text-sm bg-white rounded hover:bg-gray-400 hover:text-white">
               Learn more
             </button>
           </div>
         </div>
       </div>
-      <div className="w-1/6 grid grid-row-3 space-y-2">
-        <div className="flex flex-col items-center bg-blue-50 p-3 rounded space-y-4">
+      <div className="grid w-1/6 space-y-2 grid-row-3">
+        <div className="flex flex-col items-center p-3 space-y-4 rounded bg-blue-50">
           <div className="flex space-x-4">
-            <div className="h-12 w-12 bg-blue-200 rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center w-12 h-12 bg-blue-200 rounded-full">
               <Profile fill="#fff" width={30} height={30} />
             </div>
 
@@ -101,10 +99,10 @@ export default function CategoriesSlide({}: Props) {
           </BaseButton>
           <div></div>
         </div>
-        <p className="p-3 rounded bg-orange-500 text-white">
+        <p className="p-3 text-white bg-orange-500 rounded">
           Get US $10 off with a new supplier
         </p>
-        <p className="p-3 rounded bg-teal-500 text-white">
+        <p className="p-3 text-white bg-teal-500 rounded">
           Send quotes with supplier preferences
         </p>
       </div>

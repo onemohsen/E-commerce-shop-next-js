@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 
 type Props = {
   isGrid: boolean;
+  // eslint-disable-next-line no-unused-vars
   onViewClickHandler: (isGridView: boolean) => void;
   total?: number;
 };

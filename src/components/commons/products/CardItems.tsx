@@ -10,7 +10,7 @@ interface Props {
 function CardItems({ items, className }: Props) {
   return (
     <div className={className}>
-      {items.map((item, index) => (
+      {items.map((item) => (
         /* TODO: key must be changed */
         <CardItem key={item.id} item={item} />
       ))}

@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import Dropdown from "./Dropdown";
 import { ProductPageContext } from "@/state/products/ProductsPageContext";
 
-type Props = {};
-
-export default function FilterSidebar({}: Props) {
+export default function FilterSidebar() {
   const { filtersData } = useContext(ProductPageContext);
   return (
     <div className="w-1/5 space-y-1 flex-inline">

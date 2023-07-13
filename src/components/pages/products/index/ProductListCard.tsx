@@ -13,7 +13,14 @@ export default function ProductListCard({ item }: Props) {
   return (
     <div className="flex">
       <div className="flex justify-center w-3/12">
-        <Image src={item.image} width={180} height={180} alt={item.title} />
+        <Link
+          href={{
+            pathname: "products/[id]",
+            query: { id: item.id },
+          }}
+        >
+          <Image src={item.image} width={180} height={180} alt={item.title} />
+        </Link>
       </div>
       <div className="w-9/12 ">
         <div className="flex justify-between">

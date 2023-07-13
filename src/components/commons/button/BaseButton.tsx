@@ -1,9 +1,9 @@
-import React, { FC, MouseEvent } from "react";
+import React, { FC } from "react";
 
 interface PropsInterface {
   children: React.ReactNode;
   buttonClass: string;
-  onClick?: (event: MouseEvent) => void;
+  onClick?: () => void;
   [k: string]: any;
 }
 

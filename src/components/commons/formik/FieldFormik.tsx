@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, useFormikContext } from "formik";
+import { ErrorMessage, Field } from "formik";
 import React, { FC } from "react";
 
 interface PropsInterface {
@@ -32,7 +32,7 @@ const FieldFormik: FC<PropsInterface> = ({
         <ErrorMessage
           name={name}
           component="span"
-          className="text-red-500 text-xs"
+          className="text-xs text-red-500"
         />
       )}
     </>

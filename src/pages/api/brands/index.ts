@@ -12,7 +12,7 @@ export default function handler(
 
     if (req.method !== "GET") res.status(404).json({ message: "only Get method is supported", statusCode: res.statusCode });
 
-    const { imageQuilty, page, perPage } = (new QueryParamsClass(req.query)).getParams();
+    const { imageQuilty } = (new QueryParamsClass(req.query)).getParams();
 
     let filterDataInstance = new FilterDataClass<Brand>(getData(imageQuilty!), { ...req.query });
 
