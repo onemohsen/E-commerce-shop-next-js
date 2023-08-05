@@ -1,6 +1,6 @@
 import React from "react";
-import CardItems from "./CardItems";
 import { ProductType } from "@/models/Product";
+import CardItems from "./CardItems";
 
 function RecommendedProducts() {
   const items: ProductType[] = [
@@ -10,6 +10,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/1/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/2/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 3,
@@ -24,6 +26,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/3/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 4,
@@ -31,6 +34,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/4/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 5,
@@ -38,6 +42,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/5/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 6,
@@ -45,6 +50,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/6/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 7,
@@ -52,6 +58,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/7/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 8,
@@ -59,6 +66,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/8/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 9,
@@ -66,6 +74,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/9/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
     {
       id: 10,
@@ -73,6 +82,7 @@ function RecommendedProducts() {
       image: "https://picsum.photos/id/10/100",
       price: 10.3,
       summary: "T-shirts with multiple colors, for man",
+      quantity: 1,
     },
   ];
 

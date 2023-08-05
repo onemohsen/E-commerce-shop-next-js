@@ -4,6 +4,7 @@ import {
   Order,
   Profile,
 } from "@/components/commons/icons/Index";
+import Link from "next/link";
 import React from "react";
 
 const Action = () => {
@@ -14,17 +15,17 @@ const Action = () => {
         <span className="text-xs text-gray-500">Profile</span>
       </div>
       <div className="flex flex-col items-center space-y-2">
-        <Message className="w-5 h-5 fill-gray-600" />
+        <Message className="h-5 w-5 fill-gray-600" />
         <span className="text-xs text-gray-500">Message</span>
       </div>
       <div className="flex flex-col items-center space-y-2">
         <Order />
         <span className="text-xs text-gray-500">Order</span>
       </div>
-      <div className="flex flex-col items-center space-y-2">
-        <Cart />
+      <Link href="/cart" className="flex flex-col items-center space-y-2">
+        <Cart className="h-5 w-5 fill-gray-500" />
         <span className="text-xs text-gray-500">Cart</span>
-      </div>
+      </Link>
     </div>
   );
 };

@@ -13,7 +13,7 @@ export default function ProductImage({ className }: Props) {
 
   return (
     <div className={`${className}`}>
-      <div className="p-5 mb-4 border">
+      <div className="mb-4 border p-5">
         <Image
           src={product.image}
           width={345}
@@ -24,7 +24,7 @@ export default function ProductImage({ className }: Props) {
       <div className="flex flex-wrap gap-2">
         {images.map((image, index) => (
           <Image
-            className="p-1 border"
+            className="border p-1"
             src={image}
             width={50}
             height={50}

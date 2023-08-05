@@ -5,7 +5,7 @@ import { ProductPageContext } from "@/state/products/ProductsPageContext";
 export default function FilterSidebar() {
   const { filtersData } = useContext(ProductPageContext);
   return (
-    <div className="w-1/5 space-y-1 flex-inline">
+    <div className="flex-inline w-1/5 space-y-1">
       {Object.keys(filtersData).map((key, index) => {
         return (
           <div key={`${key}-${index}`}>

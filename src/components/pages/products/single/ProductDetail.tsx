@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DynamicTabComponent from "./product-detail/DynamicTabComponent";
+import BoxWrapper from "@/components/commons/wrapper/BoxWrapper";
 
 type TabType = {
   activeTab: string;
@@ -20,7 +21,7 @@ const Tab = ({ activeTab, clickHandler }: TabType) => {
   const tabs = ["Description", "Reviews", "Shipping", "AboutCompany"];
 
   return (
-    <ul className="flex space-x-5 mb-4 ">
+    <ul className="mb-4 flex space-x-5 ">
       {tabs.map((tab, index) => (
         <Li
           title={tab}
@@ -36,14 +37,14 @@ const Tab = ({ activeTab, clickHandler }: TabType) => {
 const Li = ({ title, isActive, clickHandler }: LiType) => {
   return (
     <li
-      className={` border-b border-spacing-3 ${
-        isActive ? "text-primary cursor-default" : "cursor-pointer"
+      className={` border-spacing-3 border-b ${
+        isActive ? "cursor-default text-primary" : "cursor-pointer"
       } `}
       onClick={() => (!isActive ? clickHandler(title) : null)}
     >
       <span className="px-3">{title}</span>
       {isActive && (
-        <hr className="w-full mt-2 border-2 rounded-md border-primary" />
+        <hr className="mt-2 w-full rounded-md border-2 border-primary" />
       )}
     </li>
   );
@@ -53,12 +54,12 @@ export default function ProductDetail({ className }: Props) {
   const [activeTab, setActiveTab] = useState(`Description`);
 
   return (
-    <div className={className}>
+    <BoxWrapper className={className}>
       <Tab
         activeTab={activeTab}
         clickHandler={(title) => setActiveTab(() => title)}
       />
       <DynamicTabComponent name={activeTab} />
-    </div>
+    </BoxWrapper>
   );
 }

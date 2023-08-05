@@ -60,8 +60,8 @@ const Footer = () => {
   return (
     <div className="bg-white">
       <ContainerWrapper>
-        <div className=" grid grid-cols-8 gap-4 justify-items-stretch py-10">
-          <div className="col-span-2 justify-self-start space-y-3">
+        <div className=" grid grid-cols-8 justify-items-stretch gap-4 py-10">
+          <div className="col-span-2 space-y-3 justify-self-start">
             <Logo />
             <p>
               Best information about the company gies here but now lorem ipsum
@@ -69,7 +69,7 @@ const Footer = () => {
             </p>
             <Social />
           </div>
-          <div className="col-span-5 w-full justify-self-center flex justify-between px-20">
+          <div className="col-span-5 flex w-full justify-between justify-self-center px-20">
             {footerLists.map((list) => (
               <ul key={list.headerTitle} className="space-y-2">
                 <li className="font-bold">{list.headerTitle}</li>
@@ -80,7 +80,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="col-span-1 justify-self-end ">
-            <span className="block mb-2 font-bold">Get app</span>
+            <span className="mb-2 block font-bold">Get app</span>
             <div className="space-y-3">
               <Image src={GooglePlayImage} alt="google play" />
               <Image src={AppStoreImage} alt="app store" />

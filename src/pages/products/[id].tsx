@@ -22,24 +22,19 @@ export default function Index({
     { name: product.title },
   ];
 
-  const productRowClass = "p-4 bg-white border rounded";
-
   return (
-    <ContainerWrapper className="py-5 space-y-5">
+    <ContainerWrapper className="space-y-5 py-5">
       <Breadcrumbs items={breadcrumbs} />
       <SingleProductContext.Provider value={{ product }}>
         <ProductMain />
         <div className="grid grid-cols-12 gap-3 ">
-          <ProductDetail className={`col-span-9 p-4  ${productRowClass}`} />
+          <ProductDetail className="col-span-9" />
           <ProductYouMayLike
             items={youMayLikeProducts}
-            className={`col-span-3 p-4 ${productRowClass}`}
+            className="col-span-3"
           />
         </div>
-        <ProductRelated
-          products={relatedProducts}
-          className={`${productRowClass} `}
-        />
+        <ProductRelated products={relatedProducts} />
       </SingleProductContext.Provider>
     </ContainerWrapper>
   );

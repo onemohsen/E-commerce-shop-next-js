@@ -1,4 +1,4 @@
 export type MenuType = {
-    name: string,
-    route: string,
-}
+  name: string;
+  route: string;
+};

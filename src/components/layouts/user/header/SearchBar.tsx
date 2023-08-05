@@ -12,7 +12,7 @@ const SearchBar: FC = () => {
     <div className="flex">
       <input
         type="text"
-        className=" border-2 border-r-0 border-primary rounded-l-lg px-1.5 py-1.5  focus:outline-none"
+        className=" rounded-l-lg border-2 border-r-0 border-primary px-1.5 py-1.5  focus:outline-none"
         placeholder="Search"
       />
       <select className=" border-2 border-primary bg-white px-2 focus:outline-none">

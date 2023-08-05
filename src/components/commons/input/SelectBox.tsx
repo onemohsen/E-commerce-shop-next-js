@@ -9,7 +9,7 @@ interface PropsInterface {
 
 function getPropValue<T = string>(
   need: string,
-  object: { [k: string]: any }
+  object: { [k: string]: any },
 ): T | undefined {
   return Object.values(object)[
     Object.keys(object).findIndex((i) => i === need)

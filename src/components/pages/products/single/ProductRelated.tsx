@@ -1,6 +1,7 @@
 import { ProductType } from "@/models/Product";
 import React from "react";
 import ProductCard from "./ProductCard";
+import BoxWrapper from "@/components/commons/wrapper/BoxWrapper";
 
 type Props = {
   products: ProductType[];
@@ -9,15 +10,14 @@ type Props = {
 
 export default function ProductRelated({ products, className }: Props) {
   return (
-    <div className={className}>
-      <h3 className="text-lg font-semibold mb-5">Related products</h3>
+    <BoxWrapper className={className} title="Related products">
       <div className="flex flex-wrap ">
         {products.map((p) => (
           <ProductCard
             key={p.id}
             item={p}
             imageSize={135}
-            className="flex flex-col w-1/6 items-center"
+            className="flex w-1/6 flex-col items-center"
           />
         ))}
 
@@ -25,6 +25,6 @@ export default function ProductRelated({ products, className }: Props) {
           <span className="text-gray-400">No related products found.</span>
         )}
       </div>
-    </div>
+    </BoxWrapper>
   );
 }

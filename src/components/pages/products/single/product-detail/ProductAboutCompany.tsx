@@ -1,8 +1,5 @@
-import React from 'react'
-
+import React from "react";
 
 export default function ProductAboutCompany() {
-  return (
-    <div>ProductAboutCompany Component</div>
-  )
+  return <div>ProductAboutCompany Component</div>;
 }

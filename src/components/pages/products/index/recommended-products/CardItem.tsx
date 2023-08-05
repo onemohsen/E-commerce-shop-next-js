@@ -8,7 +8,7 @@ interface Props {
 
 function CardItem({ item }: Props) {
   return (
-    <div className="px-2 py-5 bg-white border">
+    <div className="border bg-white px-2 py-5">
       <div className="flex justify-center">
         <Image src={item.image} width={150} height={150} alt="t-shitr" />
       </div>

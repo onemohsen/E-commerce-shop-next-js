@@ -14,7 +14,7 @@ export default function DropdownLessAndMore({
   return (
     <>
       <li className="pb-4">
-        <a className="text-blue-500 cursor-pointer" onClick={onClickHandler}>
+        <a className="cursor-pointer text-blue-500" onClick={onClickHandler}>
           {text}
         </a>
       </li>

@@ -12,7 +12,7 @@ type Props = {
 export default function ProductListCard({ item }: Props) {
   return (
     <div className="flex">
-      <div className="flex justify-center w-3/12">
+      <div className="flex w-3/12 justify-center">
         <Link
           href={{
             pathname: "products/[id]",
@@ -26,7 +26,7 @@ export default function ProductListCard({ item }: Props) {
         <div className="flex justify-between">
           <h2>{item.title}</h2>
           <Love
-            className="w-10 h-10 fill-current text-blue-600 hover:text-blue-900 border p-1.5 rounded cursor-pointer"
+            className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
             isFill={false}
           />
         </div>

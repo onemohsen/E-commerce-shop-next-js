@@ -19,11 +19,11 @@ const getAvailableFilterTags = (filtersData: {
     if (!dropdown["selected"].length) return;
 
     const itemSelected = dropdown.items.filter((item) =>
-      dropdown["selected"].includes(item.id.toString())
+      dropdown["selected"].includes(item.id.toString()),
     );
 
     itemSelected.forEach((item) =>
-      tags.push({ dropdown: key, name: item.name, value: item.id })
+      tags.push({ dropdown: key, name: item.name, value: item.id }),
     );
   });
 
@@ -54,7 +54,7 @@ export default function CurrentFilters() {
   };
 
   return (
-    <div className="flex items-center my-5 space-x-2">
+    <div className="my-5 flex items-center space-x-2">
       {tags.map((tag) => (
         <Tag
           key={`${tag.dropdown}-${tag.value}`}
@@ -64,7 +64,7 @@ export default function CurrentFilters() {
       ))}
       {tags.length > 0 && (
         <a
-          className="text-blue-600 cursor-pointer "
+          className="cursor-pointer text-blue-600 "
           onClick={() => removeTag()}
         >
           Clear all filter

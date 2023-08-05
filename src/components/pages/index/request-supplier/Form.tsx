@@ -33,19 +33,19 @@ export default function Form() {
 
   const formSubmitHandler = (
     values: RequestSupplierFormInterface,
-    actions: FormikHelpers<RequestSupplierFormInterface>
+    actions: FormikHelpers<RequestSupplierFormInterface>,
   ) => {
     showToast("success", `data: ${JSON.stringify(values)}`);
     actions.resetForm();
   };
 
   const showErrorMessages = (
-    errors: FormikErrors<RequestSupplierFormInterface>
+    errors: FormikErrors<RequestSupplierFormInterface>,
   ) => {
     return (
       Object.keys(errors).length > 0 && (
         <div>
-          <span className="text-xs text-red-500 font-bold">Form Errors:</span>
+          <span className="text-xs font-bold text-red-500">Form Errors:</span>
           <ul className="list-disc">
             {Object.values(errors).map((value, index) => (
               <li key={index} className="text-xs text-red-500">
@@ -67,33 +67,33 @@ export default function Form() {
       validationSchema={validationSchema}
     >
       {({ errors }) => (
-        <Formk className="bg-white rounded  p-8 flex flex-col space-y-6">
+        <Formk className="flex flex-col  space-y-6 rounded bg-white p-8">
           <span>Send quote to suppliers</span>
           {showErrorMessages(errors)}
           <FieldFormik
             name=""
             disabled
             value="what item you need ?"
-            className={`${inputClasses} focus:outline-none p-2`}
+            className={`${inputClasses} p-2 focus:outline-none`}
           />
           <FieldFormik
             as="textarea"
             rows="2"
             placeholder="Type more details"
             name="description"
-            className={`${inputClasses} focus:outline-none p-2`}
+            className={`${inputClasses} p-2 focus:outline-none`}
           />
           <div className="space-x-3">
             <FieldFormik
               type="number"
               placeholder="Quantity"
               name="quentity"
-              className={`${inputClasses} focus:outline-none p-2 w-2/5`}
+              className={`${inputClasses} w-2/5 p-2 focus:outline-none`}
             />
             <FieldFormik
               as="select"
               name="category"
-              className={`${inputClasses} bg-white focus:outline-none p-2 w-1/5`}
+              className={`${inputClasses} w-1/5 bg-white p-2 focus:outline-none`}
             >
               {options.map((item, index) => {
                 return (

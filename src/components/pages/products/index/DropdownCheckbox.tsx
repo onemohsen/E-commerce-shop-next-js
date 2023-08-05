@@ -22,7 +22,7 @@ export default function DropdownCheckbox({
   const [showDropdown, setShowDropdown] = useState<boolean>(show);
 
   const checkboxChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     let checkboxValues = itemChecked;
 
@@ -30,7 +30,7 @@ export default function DropdownCheckbox({
       checkboxValues = [...itemChecked, +event?.target.value];
     } else {
       checkboxValues = itemChecked.filter(
-        (item) => item != +event.target.value
+        (item) => item != +event.target.value,
       );
     }
     onClickHandler(checkboxValues);

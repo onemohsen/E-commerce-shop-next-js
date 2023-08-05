@@ -1,17 +1,19 @@
 {
   "extends": [
-    "prettier",
     "eslint:recommended",
-    "next"
+    "next",
+    "prettier"
   ],
   "rules": {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error"
-    ]
+    ],
+    "prettier/prettier": "error"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "globals": {
     "React": true,

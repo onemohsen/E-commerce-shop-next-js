@@ -11,12 +11,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#0D6EFD'
+        primary: "#0D6EFD",
       },
     },
   },
   plugins: [],
-  safelist: [
-
-  ],
-}
+  safelist: [],
+};

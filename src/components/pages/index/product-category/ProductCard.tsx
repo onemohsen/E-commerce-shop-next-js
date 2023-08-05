@@ -9,11 +9,11 @@ type Props = {
 };
 export const ProductCard = ({ item, className }: Props) => {
   return (
-    <div className={`bg-white px-3 py-1 border ${className}`}>
+    <div className={`border bg-white px-3 py-1 ${className}`}>
       <div className="flex justify-between ">
         <div className="flex flex-col text-xs text-gray-400">
           <p
-            className="w-24 mb-4 text-lg text-black truncate "
+            className="mb-4 w-24 truncate text-lg text-black "
             title={item.title}
           >
             {item.title}

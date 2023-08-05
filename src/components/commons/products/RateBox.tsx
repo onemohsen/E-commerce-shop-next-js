@@ -39,7 +39,7 @@ export default function StarIconBox({ score, fullScore = 10 }: Props) {
   };
 
   const stars = Array.from({ length: starCount }, (_, index) =>
-    makeStartIcon(index)
+    makeStartIcon(index),
   );
 
   return (

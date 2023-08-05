@@ -6,11 +6,11 @@ import germany from "@/assets/images/countries/germany.png";
 const Language = () => {
   return (
     <div className="flex space-x-5">
-      <div className="flex space-x-2 items-center">
+      <div className="flex items-center space-x-2">
         <span>English, USD</span>
         <ArrowDown />
       </div>
-      <div className="flex space-x-3 items-center">
+      <div className="flex items-center space-x-3">
         <span>Ship to</span>
         <Image src={germany} alt="germany" />
         <ArrowDown />

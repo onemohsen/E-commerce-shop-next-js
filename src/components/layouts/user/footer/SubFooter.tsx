@@ -5,7 +5,7 @@ import ArrowDown from "@/components/commons/icons/ArrowDown";
 
 const SubFooter = () => {
   return (
-    <div className="h-14 flex justify-between ">
+    <div className="flex h-14 justify-between ">
       <span className="flex items-center">© 2023 Ecommerce. </span>
       <div className="flex  items-center space-x-1.5">
         <Image src={UsaImage} alt="usa country" />

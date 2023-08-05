@@ -21,7 +21,7 @@ const ListItem = ({ item, selectedList, onClickHandler }: ListItemProps) => {
 
   return (
     <li
-      className={`py-1.5 px-1 cursor-pointer hover:bg-blue-100 ${activeItemClass}`}
+      className={`cursor-pointer py-1.5 px-1 hover:bg-blue-100 ${activeItemClass}`}
       onClick={(event) => onClickHandler(event)}
       value={item.id}
     >
@@ -37,7 +37,7 @@ export default function DropdownList({ header, item, onClickHandler }: Props) {
   const [showDropdown, setShowDropdown] = useState<boolean>(show);
 
   const listClickHandler = (
-    event: React.MouseEvent<HTMLLIElement, MouseEvent>
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
   ) => {
     let value = event.currentTarget.getAttribute("value");
     onClickHandler(value ? [+value] : []);

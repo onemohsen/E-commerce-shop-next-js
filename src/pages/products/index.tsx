@@ -59,7 +59,7 @@ export default function Index({
   };
 
   return (
-    <ContainerWrapper className="py-5 space-y-5">
+    <ContainerWrapper className="space-y-5 py-5">
       <Breadcrumbs items={breadcrumbs} />
       <ProductPageContext.Provider value={{ filtersData: filtersData }}>
         <div className="flex">
@@ -70,7 +70,7 @@ export default function Index({
           />
         </div>
       </ProductPageContext.Provider>
-      <div className="py-10 bg-gray-200">
+      <div className="bg-gray-200 py-10">
         <Subscribe />
       </div>
     </ContainerWrapper>
@@ -84,26 +84,25 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
 
   const baseUrl = process.env.BASE_API_URL || "http://localhost:3000/api";
 
-    const [productsRes, categoroesRes, brandsRes] = await Promise.all([
-      fetch(`${baseUrl}/products${queryString}`),
-      fetch(`${baseUrl}/categories`),
-      fetch(`${baseUrl}/brands`),
-    ]);
+  const [productsRes, categoroesRes, brandsRes] = await Promise.all([
+    fetch(`${baseUrl}/products${queryString}`),
+    fetch(`${baseUrl}/categories`),
+    fetch(`${baseUrl}/brands`),
+  ]);
 
-    const [products, categories, brands] = await Promise.all([
-      productsRes.json(),
-      categoroesRes.json(),
+  const [products, categories, brands] = await Promise.all([
+    productsRes.json(),
+    categoroesRes.json(),
     brandsRes.json(),
-    ]);
+  ]);
 
-    return {
-      props: {
-        products: products.data,
-        productPaginate: products.meta?.paginate ?? undefined,
-        categories: categories.data,
-        brands: brands.data,
-      },
-    };
-  
+  return {
+    props: {
+      products: products.data,
+      productPaginate: products.meta?.paginate ?? undefined,
+      categories: categories.data,
+      brands: brands.data,
+    },
+  };
 };
-initFiltersData
+initFiltersData;

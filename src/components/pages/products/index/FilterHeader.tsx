@@ -26,7 +26,7 @@ export default function FilterHeader({
   });
 
   return (
-    <div className="flex justify-between p-4 mb-2 bg-white">
+    <div className="mb-2 flex justify-between bg-white p-4">
       <div>
         <span>{total} items in </span>
         <span className="font-bold">

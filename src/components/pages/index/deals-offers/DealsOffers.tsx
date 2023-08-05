@@ -22,6 +22,7 @@ export default function DealsOffers({ className }: Props) {
       price: 1,
       title: "Smart watches",
       offer: 25,
+      quantity: 1,
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ export default function DealsOffers({ className }: Props) {
       price: 2,
       title: "test2",
       offer: 25,
+      quantity: 1,
     },
     {
       id: 3,
@@ -36,6 +38,7 @@ export default function DealsOffers({ className }: Props) {
       price: 3,
       title: "test3",
       offer: 25,
+      quantity: 1,
     },
     {
       id: 4,
@@ -43,6 +46,7 @@ export default function DealsOffers({ className }: Props) {
       price: 4,
       title: "test4",
       offer: 25,
+      quantity: 1,
     },
     {
       id: 5,
@@ -50,12 +54,13 @@ export default function DealsOffers({ className }: Props) {
       price: 5,
       title: "test5",
       offer: 25,
+      quantity: 1,
     },
   ];
 
   const CountDownComponent = dynamic(
     () => import("@/components/pages/index/deals-offers/CountDown"),
-    { ssr: false }
+    { ssr: false },
   );
 
   let fiveDaysLater = new Date(today);
@@ -63,20 +68,20 @@ export default function DealsOffers({ className }: Props) {
 
   return (
     <div className={`${className}`}>
-      <div className="w-1/4 h-56 p-5 overflow-hidden bg-white border overflow">
+      <div className="overflow h-56 w-1/4 overflow-hidden border bg-white p-5">
         <p className="font-bold">Deals and offers</p>
         <span className="text-xs text-gray-400">Hygiene equipments</span>
         <CountDownComponent
           date={fiveDaysLater}
-          className="flex w-full mt-5 space-x-1"
+          className="mt-5 flex w-full space-x-1"
         />
       </div>
-      <div className="flex flex-wrap w-3/4">
+      <div className="flex w-3/4 flex-wrap">
         {offerProducts.map((item) => (
           <ProductOfferCard
             key={item.id}
             item={item}
-            className="flex flex-col items-center justify-between w-1/5 p-4 overflow-hidden bg-white border "
+            className="flex w-1/5 flex-col items-center justify-between overflow-hidden border bg-white p-4 "
           />
         ))}
       </div>

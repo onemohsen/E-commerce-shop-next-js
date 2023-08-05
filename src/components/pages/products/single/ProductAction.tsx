@@ -12,9 +12,9 @@ type Props = {
 export default function ProductAction({ className }: Props) {
   return (
     <div className={className}>
-      <div className="p-4 border rounded">
+      <div className="rounded border p-4">
         <div className="flex items-center space-x-2">
-          <p className="flex items-center justify-center w-10 h-10 text-center bg-teal-400 rounded">
+          <p className="flex h-10 w-10 items-center justify-center rounded bg-teal-400 text-center">
             R
           </p>
           <span>Supplier Guanjoi Trading LLC</span>
@@ -26,11 +26,11 @@ export default function ProductAction({ className }: Props) {
             <span>Germany, Berlin</span>
           </div>
           <div className="flex items-center space-x-3">
-            <Verify className="inline w-5 h-5 fill-gray-500" />
+            <Verify className="inline h-5 w-5 fill-gray-500" />
             <span>Verified Seller</span>
           </div>
           <div className="space-x-3">
-            <Language className="inline w-5 h-5 fill-gray-500" />
+            <Language className="inline h-5 w-5 fill-gray-500" />
             <span>Worldwide shipping</span>
           </div>
         </div>
@@ -43,8 +43,8 @@ export default function ProductAction({ className }: Props) {
         </div>
       </div>
 
-      <div className="flex items-center justify-center mt-5 space-x-2 text-blue-700 cursor-default">
-        <Love className="inline-flex w-5 h-5 fill-blue-700" />
+      <div className="mt-5 flex cursor-default items-center justify-center space-x-2 text-blue-700">
+        <Love className="inline-flex h-5 w-5 fill-blue-700" />
         <span>Save for later</span>
       </div>
     </div>

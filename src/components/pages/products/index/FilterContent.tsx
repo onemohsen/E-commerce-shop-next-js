@@ -16,7 +16,7 @@ const ProductsGrid = ({ products }: Props) => {
   return (
     <div className="grid grid-cols-3 gap-5">
       {products.map((product) => (
-        <div key={product.id} className="bg-white border rounded ">
+        <div key={product.id} className="rounded border bg-white ">
           <ProductGridCard item={product} />
         </div>
       ))}
@@ -28,7 +28,7 @@ const ProductsList = ({ products }: Props) => {
   return (
     <div className="space-y-2">
       {products.map((product) => (
-        <div key={product.id} className="p-5 bg-white border rounded ">
+        <div key={product.id} className="rounded border bg-white p-5 ">
           <ProductListCard item={product} />
         </div>
       ))}
@@ -54,7 +54,7 @@ export default function FilterContent({ products, productsPaginate }: Props) {
 
       {productsPaginate && (
         <Paginate
-          className="flex justify-end mt-5 space-x-3"
+          className="mt-5 flex justify-end space-x-3"
           meta={productsPaginate}
         />
       )}

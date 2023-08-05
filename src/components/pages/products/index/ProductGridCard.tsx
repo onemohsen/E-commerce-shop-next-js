@@ -11,8 +11,8 @@ type Props = {
 
 export default function ProductGridCard({ item }: Props) {
   return (
-    <div className="flex w-full h-full">
-      <div className="flex flex-col w-full mx-5 ">
+    <div className="flex h-full w-full">
+      <div className="mx-5 flex w-full flex-col ">
         <div className="flex justify-center p-8">
           <Link
             href={{
@@ -24,7 +24,7 @@ export default function ProductGridCard({ item }: Props) {
           </Link>
         </div>
         <div className="w-full border-b border-gray-200"></div>
-        <div className="p-4 space-y-2">
+        <div className="space-y-2 p-4">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <span className="text-lg font-bold">${item.price}</span>
@@ -36,7 +36,7 @@ export default function ProductGridCard({ item }: Props) {
               <RateBox score={item.rate ?? 0} />
             </div>
             <Love
-              className="w-10 h-10 fill-current text-blue-600 hover:text-blue-900 border p-1.5 rounded cursor-pointer"
+              className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
               isFill={false}
             />
           </div>

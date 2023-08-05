@@ -38,11 +38,11 @@ export default function Paginate({ meta, ...rest }: Props) {
             page: meta.from - 1 > 1 ? meta.from - 1 : 1,
           },
         }}
-        className={`flex items-center px-2 py-3 bg-white hover:bg-gray-100 border rounded-r ${
+        className={`flex items-center rounded-r border bg-white px-2 py-3 hover:bg-gray-100 ${
           active === meta.last_page ? "pointer-events-none" : ""
         }`}
       >
-        <ChervonRight className="w-5 h-w-5" />
+        <ChervonRight className="h-w-5 w-5" />
       </Link>
     );
   };
@@ -56,11 +56,11 @@ export default function Paginate({ meta, ...rest }: Props) {
             page: meta.from - 1 > 1 ? meta.from - 1 : 1,
           },
         }}
-        className={`flex items-center px-2 py-3 bg-white hover:bg-gray-100 border rounded-l ${
+        className={`flex items-center rounded-l border bg-white px-2 py-3 hover:bg-gray-100 ${
           active === 1 ? "pointer-events-none" : ""
         }`}
       >
-        <ChervonLeft className="w-5 h-w-5" />
+        <ChervonLeft className="h-w-5 w-5" />
       </Link>
     );
   };
@@ -83,7 +83,7 @@ export default function Paginate({ meta, ...rest }: Props) {
           betweenpage = pages.push(
             <li key={i} {...getItemProps(i)}>
               ...
-            </li>
+            </li>,
           );
         }
         continue;
@@ -91,7 +91,7 @@ export default function Paginate({ meta, ...rest }: Props) {
       pages.push(
         <li key={i}>
           <Link {...getItemProps(i)}>{i}</Link>
-        </li>
+        </li>,
       );
     }
 
@@ -109,7 +109,7 @@ export default function Paginate({ meta, ...rest }: Props) {
 
     return (
       <select
-        className="flex items-center px-5 py-3 bg-white border hover:bg-gray-100"
+        className="flex items-center border bg-white px-5 py-3 hover:bg-gray-100"
         onChange={changeHandler}
         value={query.perPage}
       >
@@ -128,7 +128,7 @@ export default function Paginate({ meta, ...rest }: Props) {
       <div {...rest}>
         {makeSelectPerpage()}
         <nav className="block">
-          <ul className="flex flex-wrap items-center list-none rounded">
+          <ul className="flex list-none flex-wrap items-center rounded">
             <li>{makePrev()}</li>
             {makePage()}
             <li>{makeNext()}</li>

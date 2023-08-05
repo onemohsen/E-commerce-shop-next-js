@@ -14,7 +14,7 @@ export default function DropdownHeader({
 }: Props) {
   return (
     <li
-      className="font-bold flex justify-between items-center py-3 cursor-pointer"
+      className="flex cursor-pointer items-center justify-between py-3 font-bold"
       onClick={onClickHandler}
     >
       <span>{header}</span>

@@ -39,7 +39,7 @@ export default function CategoriesSlide() {
   useEffect(() => {
     const interval = setInterval(() => {
       const lastIndex = categories.findIndex(
-        (item) => item.id === activeCategory.id
+        (item) => item.id === activeCategory.id,
       );
       const newIndex = categories[lastIndex + 1] ? lastIndex + 1 : 0;
 
@@ -50,8 +50,8 @@ export default function CategoriesSlide() {
   }, [activeCategory]);
 
   return (
-    <div className="w-full flex bg-white p-4 space-x-3 max-h-[420px]">
-      <div className="flex flex-col w-1/6 space-y-1 ">
+    <div className="flex max-h-[420px] w-full space-x-3 bg-white p-4">
+      <div className="flex w-1/6 flex-col space-y-1 ">
         {categories.map((category) => (
           <a
             onClick={() => categoryClickHandler(category)}
@@ -71,19 +71,19 @@ export default function CategoriesSlide() {
           alt={activeCategory.name}
         />
         <div className="absolute top-12 left-10">
-          <div className="p-5 text-lg bg-white rounded bg-opacity-20">
+          <div className="rounded bg-white bg-opacity-20 p-5 text-lg">
             <p>Latest trending</p>
             <p className="text-xl font-bold">{activeCategory.name}</p>
-            <button className="px-3 py-1 mt-3 text-sm bg-white rounded hover:bg-gray-400 hover:text-white">
+            <button className="mt-3 rounded bg-white px-3 py-1 text-sm hover:bg-gray-400 hover:text-white">
               Learn more
             </button>
           </div>
         </div>
       </div>
-      <div className="grid w-1/6 space-y-2 grid-row-3">
-        <div className="flex flex-col items-center p-3 space-y-4 rounded bg-blue-50">
+      <div className="grid-row-3 grid w-1/6 space-y-2">
+        <div className="flex flex-col items-center space-y-4 rounded bg-blue-50 p-3">
           <div className="flex space-x-4">
-            <div className="flex items-center justify-center w-12 h-12 bg-blue-200 rounded-full">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-200">
               <Profile fill="#fff" width={30} height={30} />
             </div>
 
@@ -99,10 +99,10 @@ export default function CategoriesSlide() {
           </BaseButton>
           <div></div>
         </div>
-        <p className="p-3 text-white bg-orange-500 rounded">
+        <p className="rounded bg-orange-500 p-3 text-white">
           Get US $10 off with a new supplier
         </p>
-        <p className="p-3 text-white bg-teal-500 rounded">
+        <p className="rounded bg-teal-500 p-3 text-white">
           Send quotes with supplier preferences
         </p>
       </div>

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <ContainerWrapper className="h-[5.3rem] grid content-center">
+    <ContainerWrapper className="grid h-[5.3rem] content-center">
       <div className="grid grid-cols-3 items-center">
         <div className="flex justify-start">
           <Link href={{ pathname: "/" }}>

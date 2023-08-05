@@ -1,1 +1,1 @@
-export { default as makeQueryParams } from '@/services/helpers/makeQueryParams';
+export { default as makeQueryParams } from "@/services/helpers/makeQueryParams";

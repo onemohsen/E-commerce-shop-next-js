@@ -11,9 +11,9 @@ export default function RequestSupplier() {
         backgroundSize: "auto",
       }}
     >
-      <div className="flex justify-between p-8 bg-gradient-to-r from-blue-500 ">
+      <div className="flex justify-between bg-gradient-to-r from-blue-500 p-8 ">
         <div className="w-1/4 space-y-4">
-          <p className="text-white text-2xl font-bold ">
+          <p className="text-2xl font-bold text-white ">
             An easy way to send requests to all suppliers
           </p>
           <p className="text-white">

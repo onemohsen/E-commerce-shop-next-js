@@ -1,6 +1,7 @@
 import { ProductType } from "@/models/Product";
 import React from "react";
 import ProductCard from "./ProductCard";
+import BoxWrapper from "@/components/commons/wrapper/BoxWrapper";
 
 type Props = {
   className: string;
@@ -9,8 +10,7 @@ type Props = {
 
 export default function ProductYouMayLike({ className, items }: Props) {
   return (
-    <div className={className}>
-      <span className="mb-5 block">You may like</span>
+    <BoxWrapper className={className} title="You may like">
       <div className="space-y-5">
         {items.map((p) => (
           <ProductCard
@@ -20,6 +20,6 @@ export default function ProductYouMayLike({ className, items }: Props) {
           />
         ))}
       </div>
-    </div>
+    </BoxWrapper>
   );
 }

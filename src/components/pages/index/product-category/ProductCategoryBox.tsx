@@ -13,10 +13,10 @@ type Props = {
 export const ProductCategoryBox = ({ item, className }: Props) => {
   return (
     <div className={className}>
-      <div className="w-1/4 overflow overflow-hidden relative">
+      <div className="overflow relative w-1/4 overflow-hidden">
         <div className="absolute left-5 top-5 w-2/4">
           <span className=" font-bold">{item.category.name}</span>
-          <button className=" px-3 py-2 mt-3 rounded bg-white hover:bg-gray-400 hover:text-white">
+          <button className=" mt-3 rounded bg-white px-3 py-2 hover:bg-gray-400 hover:text-white">
             Source now
           </button>
         </div>
@@ -28,7 +28,7 @@ export const ProductCategoryBox = ({ item, className }: Props) => {
           style={{ objectFit: "contain" }}
         />
       </div>
-      <div className="w-3/4 flex flex-wrap">
+      <div className="flex w-3/4 flex-wrap">
         {item?.products.map((product) => (
           <ProductCard
             key={`${item.category.id}-${product?.id}`}

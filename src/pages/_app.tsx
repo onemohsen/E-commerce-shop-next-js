@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <>
         <Component {...pageProps} />
         <ToastContainer />
-      </>
+      </>,
     );
   }
 

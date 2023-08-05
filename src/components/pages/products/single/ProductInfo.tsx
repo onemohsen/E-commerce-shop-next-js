@@ -32,7 +32,7 @@ export default function ProductInfo({ className }: Props) {
     if (product.quantity > 0) {
       return (
         <div className="flex">
-          <Check className="w-5 h-5 fill-green-700" />
+          <Check className="h-5 w-5 fill-green-700" />
           <span className="text-green-700">in stock</span>
         </div>
       );
@@ -43,13 +43,13 @@ export default function ProductInfo({ className }: Props) {
     index: number,
     price: number,
     minQ: number,
-    maxQ?: number
+    maxQ?: number,
   ) => {
     const priceClass = index == 0 ? "text-red-500" : "";
 
     return (
       <div className="flex">
-        {index != 0 && <span className="px-2 border-l border-gray-400" />}
+        {index != 0 && <span className="border-l border-gray-400 px-2" />}
         <div className="flex flex-col">
           <span className={`text-lg font-bold ${priceClass}`}>${price}</span>
           <span className="text-sm text-gray-500">
@@ -69,15 +69,15 @@ export default function ProductInfo({ className }: Props) {
       <div className="flex space-x-4 ">
         <StarIconBox score={product.rate ?? 0} />
         <div className="space-x-1">
-          <Message className="inline w-5 h-5 fill-gray-500" />
+          <Message className="inline h-5 w-5 fill-gray-500" />
           <span className="text-gray-500">{product.rate} reviews</span>
         </div>
         <div className="space-x-1">
-          <ShopingBasket className="inline w-5 h-5 fill-gray-500" />
+          <ShopingBasket className="inline h-5 w-5 fill-gray-500" />
           <span className="text-gray-500">154 sold</span>
         </div>
       </div>
-      <div className="flex justify-between p-5 space-x-5 bg-orange-200">
+      <div className="flex justify-between space-x-5 bg-orange-200 p-5">
         {quantityPrice(0, product.price, 50, 100)}
         {quantityPrice(1, 90, 100, 700)}
         {quantityPrice(2, 78, 700)}
@@ -91,7 +91,7 @@ export default function ProductInfo({ className }: Props) {
                 <span className="text-gray-700">{item.value}</span>
               </div>
             ))}
-            <span className="block w-full pt-2 mb-5 border-b border-gray-300"></span>
+            <span className="mb-5 block w-full border-b border-gray-300 pt-2"></span>
           </React.Fragment>
         ))}
       </div>

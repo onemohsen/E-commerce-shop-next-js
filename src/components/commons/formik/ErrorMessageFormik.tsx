@@ -8,7 +8,7 @@ interface PropsInterface {
 
 const ErrorMessageFormik: FC<PropsInterface> = (props) => {
   return (
-    <span className="text-red-500 text-xs">
+    <span className="text-xs text-red-500">
       <ErrorMessage {...props} />
     </span>
   );
