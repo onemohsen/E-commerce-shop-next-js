@@ -5,19 +5,33 @@ import PrimaryButton from "@/components/commons/button/PrimaryButton";
 import { ArrowLeft } from "@/components/commons/icons/Index";
 import LightButton from "@/components/commons/button/LightButton";
 import { ProductType } from "@/models/Product";
+import CartCoupon from "./CartCoupon";
+import CartCheckout from "./CartCheckout";
+import useCart from "@/hooks/cart/useCart";
 
 type Props = {
   items: ProductType[];
 };
 
 export default function CartBox({ items }: Props) {
+  const { cart, checkout, update, remove } = useCart(items);
+
   return (
     <div className="grid grid-cols-12 gap-3 ">
       <BoxWrapper className="col-span-9 space-y-5">
         <div className="w-full space-y-5">
-          {items.map((item) => (
-            <CartItem item={item} key={item.id} />
+          {cart.map((item) => (
+            <CartItem
+              item={item}
+              key={item.id}
+              removeHandler={remove}
+              quantityChangeHandler={update}
+            />
           ))}
+
+          {!cart.length && (
+            <span className="text-gray-500">cart is empty ...</span>
+          )}
         </div>
 
         <div className="flex justify-between">
@@ -32,7 +46,10 @@ export default function CartBox({ items }: Props) {
           />
         </div>
       </BoxWrapper>
-      <BoxWrapper className="col-span-3">have a coupon ?</BoxWrapper>
+      <div className="col-span-3 space-y-5">
+        <CartCoupon />
+        <CartCheckout checkout={checkout()} />
+      </div>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default function CartSavedForLater({ items }: Props) {
           >
             <span className="text-lg font-bold">${p.price}</span>
             <p
-              className="max-h-12 w-60 overflow-hidden break-words"
+              className="h-12 max-h-12 w-60 overflow-hidden break-words"
               title={p.title}
             >
               {p.title}

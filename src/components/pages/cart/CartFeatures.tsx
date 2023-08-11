@@ -41,7 +41,7 @@ export default function CartFeatures() {
   ];
 
   return (
-    <div className="flex w-9/12 ">
+    <div className="flex w-9/12 py-5">
       {features.map((feature, index) => (
         <Feature key={index} {...feature} />
       ))}

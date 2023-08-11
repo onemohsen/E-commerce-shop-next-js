@@ -4,9 +4,15 @@ import React from "react";
 
 type Props = {
   item: ProductType;
+  removeHandler: (id: number) => void;
+  quantityChangeHandler: (id: number, quantity: string) => void;
 };
 
-export default function CartItem({ item }: Props) {
+export default function CartItem({
+  item,
+  removeHandler,
+  quantityChangeHandler,
+}: Props) {
   return (
     <div className="flex space-x-4 border-b border-zinc-200 pb-5">
       <div className="flex  h-20 w-20 justify-center rounded border bg-gray-50 p-2">
@@ -22,12 +28,15 @@ export default function CartItem({ item }: Props) {
               {item.summary}
             </p>
             <div className="mt-2 flex space-x-2">
-              <div className="rounded-md border border-b border-zinc-200 bg-white py-1 px-2.5 text-center text-xs font-medium text-red-500 shadow">
+              <button
+                onClick={() => removeHandler(item.id)}
+                className="rounded-md border border-b border-zinc-200 bg-white py-1 px-2.5 text-center text-xs font-medium text-red-500 shadow"
+              >
                 Remove
-              </div>
-              <div className="rounded-md border border-zinc-200 bg-white py-1  px-2.5 text-center text-xs font-medium text-blue-600 shadow">
+              </button>
+              <button className="rounded-md border border-zinc-200 bg-white py-1  px-2.5 text-center text-xs font-medium text-blue-600 shadow">
                 Save for later
-              </div>
+              </button>
             </div>
           </div>
           <div className="flex flex-col">
@@ -38,6 +47,7 @@ export default function CartItem({ item }: Props) {
               name="quantity"
               className="mt-2 h-10 w-32 rounded-md border border-gray-300 bg-white p-2.5 text-sm text-gray-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               id=""
+              onChange={(e) => quantityChangeHandler(item.id, e.target.value)}
             >
               <option value="1">Qty: 1</option>
               <option value="2">Qty: 2</option>

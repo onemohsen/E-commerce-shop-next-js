@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 interface PropsInterface {
   children: React.ReactNode;
-  buttonClass: string;
+  buttonClass?: string;
   onClick?: () => void;
   [k: string]: any;
 }
