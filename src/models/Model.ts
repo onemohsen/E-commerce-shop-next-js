@@ -1,4 +1,4 @@
-import { makeQueryParams } from "@/services/helpers";
+import makeQueryParams from "@/utils/makeQueryParams";
 import { Product } from "./Product";
 
 type ParamsType = {

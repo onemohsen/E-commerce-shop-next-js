@@ -1,20 +1,20 @@
-import Breadcrumbs from "@/components/commons/Breadcrumbs";
-import Subscribe from "@/components/commons/Subscribe";
-import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
-import { makeQueryParams } from "@/services/helpers";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Subscribe from "@/components/Subscribe";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import makeQueryParams from "@/utils/makeQueryParams";
 import { ProductType } from "@/models/Product";
 import { BreadcrumbsType, MetaPaginate } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
-import FilterSidebar from "@/components/pages/products/index/FilterSidebar";
-import FilterContent from "@/components/pages/products/index/FilterContent";
+import FilterSidebar from "@/features/products/index/FilterSidebar";
+import FilterContent from "@/features/products/index/FilterContent";
 import { Category } from "@/models/Category";
 import { Brand } from "@/models/Brand";
 import {
   ProductPageContext,
   initFiltersData,
-} from "@/state/products/ProductsPageContext";
+} from "@/features/products/contexts/ProductsPageContext";
 
 type ServerProps = {
   products: ProductType[];

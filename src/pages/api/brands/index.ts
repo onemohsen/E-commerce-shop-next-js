@@ -1,8 +1,8 @@
 import { JsonRespone, MetaRespone } from "../../../models/Types";
 import { Brand } from "../../../models/Brand";
 import { NextApiRequest, NextApiResponse } from "next";
-import { QueryParamsClass } from "@/services/class/QueryParamsClass";
-import { FilterDataClass } from "@/services/class/FilterDataClass";
+import { QueryParamsClass } from "@/utils/QueryParamsClass";
+import { FilterDataClass } from "@/utils/FilterDataClass";
 
 export default function handler(
   req: NextApiRequest,

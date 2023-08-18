@@ -1,11 +1,11 @@
-import Subscribe from "@/components/commons/Subscribe";
-import RecommendedProducts from "@/components/pages/products/index/recommended-products/RecommendedProducts";
-import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
-import CategoriesSlide from "@/components/pages/index/deals-offers/CategoriesSlide";
-import DealsOffers from "@/components/pages/index/deals-offers/DealsOffers";
-import ExtraServices from "@/components/pages/index/extra-services/ExtraServices";
-import { ProductCategories } from "@/components/pages/index/product-category/ProductCategories";
-import RequestSupplier from "@/components/pages/index/request-supplier/RequestSupplier";
+import Subscribe from "@/components/Subscribe";
+import RecommendedProducts from "@/features/products/index/recommended-products/RecommendedProducts";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
+import CategoriesSlide from "@/features/index/deals-offers/CategoriesSlide";
+import DealsOffers from "@/features/index/deals-offers/DealsOffers";
+import ExtraServices from "@/features/index/extra-services/ExtraServices";
+import { ProductCategories } from "@/features/index/product-category/ProductCategories";
+import RequestSupplier from "@/features/index/request-supplier/RequestSupplier";
 // import { Inter } from "@next/font/google";
 
 // const inter = Inter({ subsets: ["latin"] });

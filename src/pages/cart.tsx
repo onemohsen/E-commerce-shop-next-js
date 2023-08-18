@@ -1,10 +1,8 @@
-import ContainerWrapper from "@/components/commons/wrapper/ContainerWrapper";
+import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import React from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Product, ProductType } from "@/models/Product";
-import CartBox from "@/components/pages/cart/CartBox";
-import CartFeatures from "@/components/pages/cart/CartFeatures";
-import CartSavedForLater from "@/components/pages/cart/CartSavedForLater";
+import { CartBox, CartFeatures, CartSavedForLater } from "@/features/cart";
 
 export default function cart({
   cartItems,

@@ -1,4 +1,4 @@
-import UserLayout from "@/components/layouts/user/UserLayout";
+import UserLayout from "@/layouts/user/UserLayout";
 import { store } from "@/store";
 import "@/styles/globals.css";
 import { NextPage } from "next";
