@@ -4,12 +4,15 @@ import ProductCartItem from "@/components/products/ProductCartItem";
 import BoxWrapper from "@/components/wrapper/BoxWrapper";
 import { ProductType } from "@/models/Product";
 import React from "react";
+import useActionCart from "../hooks/useActionCart";
 
 type Props = {
   items: ProductType[];
 };
 
 export default function CartSavedForLater({ items }: Props) {
+  const { add } = useActionCart();
+
   return (
     <BoxWrapper title="Saved for later">
       <div className="flex items-stretch">
@@ -28,7 +31,10 @@ export default function CartSavedForLater({ items }: Props) {
             >
               {p.title}
             </p>
-            <LightButton customClass="w-36 flex space-x-2 text-primary">
+            <LightButton
+              onClick={() => add(p)}
+              customClass="w-36 flex space-x-2 text-primary"
+            >
               <Cart className="h-5 w-5 fill-primary" />
               <span>Move to cart</span>
             </LightButton>

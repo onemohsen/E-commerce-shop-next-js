@@ -2,15 +2,20 @@ import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
 import React from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Product, ProductType } from "@/models/Product";
-import { CartBox, CartFeatures, CartSavedForLater } from "@/features/cart";
+import {
+  CartBox,
+  CartFeatures,
+  CartSavedForLater,
+  CartHeader,
+} from "@/features/cart";
 
 export default function cart({
   cartItems,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <ContainerWrapper className="space-y-5 py-5">
-      <h4 className="text-2xl font-bold">{`Cart (${cartItems.length})`}</h4>
-      <CartBox items={cartItems} />
+      <CartHeader />
+      <CartBox />
       <CartFeatures />
       <CartSavedForLater items={cartItems} />
     </ContainerWrapper>

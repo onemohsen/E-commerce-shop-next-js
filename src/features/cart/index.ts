@@ -1,5 +1,5 @@
 // hooks
-export { default as useCart } from "./useCart";
+export { default as useCart } from "./hooks/useStateCart";
 
 // store
 
@@ -10,3 +10,4 @@ export { default as CartCoupon } from "./components/CartCoupon";
 export { default as CartFeatures } from "./components/CartFeatures";
 export { default as CartItem } from "./components/CartItem";
 export { default as CartSavedForLater } from "./components/CartSavedForLater";
+export { default as CartHeader } from "./components/CartHeader";

@@ -48,6 +48,7 @@ export default function CartItem({
               className="mt-2 h-10 w-32 rounded-md border border-gray-300 bg-white p-2.5 text-sm text-gray-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               id=""
               onChange={(e) => quantityChangeHandler(item.id, e.target.value)}
+              value={item.quantity}
             >
               <option value="1">Qty: 1</option>
               <option value="2">Qty: 2</option>
