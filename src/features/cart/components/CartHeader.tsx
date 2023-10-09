@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/useStore";
+import { useAppSelector } from "@/hooks/useStore";
 import React from "react";
 
 export default function CartHeader() {

@@ -1,7 +1,6 @@
-import { Gridview, Listview } from "@/components/icons/Index";
-import { ProductPageContext } from "@/features/products/contexts/ProductsPageContext";
+import { Gridview, Listview } from "@/components/icons";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import { useProductPageContext } from "../hooks/useProductPageContext";
 
 type Props = {
   isGrid: boolean;
@@ -17,7 +16,8 @@ export default function FilterHeader({
 }: Props) {
   let iconClass = "w-8 h-8 border rounded-r p-1 cursor-pointer";
 
-  const { filtersData } = useContext(ProductPageContext);
+  const { filtersData } = useProductPageContext();
+
   const { query } = useRouter();
 
   const activeCategory = filtersData.categories.items.find((category) => {

@@ -1,6 +1,6 @@
 import { MetaPaginate } from "@/models/Types";
 import React, { useEffect, useState } from "react";
-import { ChervonLeft, ChervonRight } from "./icons/Index";
+import { ChervonLeft, ChervonRight } from "./icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

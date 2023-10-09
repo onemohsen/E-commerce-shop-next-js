@@ -1,4 +1,4 @@
-import { Check, Message, ShopingBasket } from "@/components/icons/Index";
+import { Check, Message, ShopingBasket } from "@/components/icons";
 import StarIconBox from "@/components/products/RateBox";
 import React, { useContext } from "react";
 import { SingleProductContext } from "../../contexts/SingleProductContext";

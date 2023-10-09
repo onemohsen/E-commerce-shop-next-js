@@ -1,4 +1,4 @@
-import { ArrowDown, Menu as MenuIcon } from "@/components/icons/Index";
+import { ArrowDown, Menu as MenuIcon } from "@/components/icons";
 import { MenuType } from "@/models/custom/MenuType";
 import Link from "next/link";
 import React from "react";

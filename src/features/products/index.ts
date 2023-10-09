@@ -7,3 +7,4 @@ export * from "./components/single/ProductRelated";
 export * from "./components/single/ProductYouMayLike";
 export * from "./contexts/ProductsPageContext";
 export * from "./contexts/SingleProductContext";
+export * from "./utils/initFiltersData";

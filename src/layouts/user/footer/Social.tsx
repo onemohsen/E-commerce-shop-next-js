@@ -1,9 +1,4 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-} from "@/components/icons/Index";
+import { Facebook, Instagram, Linkedin, Youtube } from "@/components/icons";
 import React from "react";
 
 const Social = () => {

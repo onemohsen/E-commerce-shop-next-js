@@ -61,13 +61,16 @@ export default function Index({
   return (
     <ContainerWrapper className="space-y-5 py-5">
       <Breadcrumbs items={breadcrumbs} />
-      <ProductPageContext.Provider value={{ filtersData: filtersData }}>
+      <ProductPageContext.Provider
+        value={{
+          filtersData: filtersData,
+          products: products,
+          paginate: productPaginate,
+        }}
+      >
         <div className="flex">
           <FilterSidebar />
-          <FilterContent
-            products={products}
-            productsPaginate={productPaginate}
-          />
+          <FilterContent />
         </div>
       </ProductPageContext.Provider>
       <div className="bg-gray-200 py-10">

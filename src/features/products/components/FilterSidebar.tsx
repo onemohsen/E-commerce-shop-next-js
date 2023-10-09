@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useProductPageContext } from "../hooks/useProductPageContext";
 import Dropdown from "./Dropdown";
-import { ProductPageContext } from "@/features/products/contexts/ProductsPageContext";
 
 export function FilterSidebar() {
-  const { filtersData } = useContext(ProductPageContext);
+  const { filtersData } = useProductPageContext();
+
   return (
     <div className="flex-inline w-1/5 space-y-1">
       {Object.keys(filtersData).map((key, index) => {

@@ -1,5 +1,6 @@
 // hooks
 export { default as useCart } from "./hooks/useStateCart";
+export { default as useActionCart } from "./hooks/useActionCart";
 
 // store
 export { default as cartReducer } from "./store/cartSlice";

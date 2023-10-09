@@ -1,6 +1,6 @@
 import { ProductType } from "@/models/Product";
 import { useCallback } from "react";
-import { useAppDispatch } from "@/useStore";
+import { useAppDispatch } from "@/hooks/useStore";
 import { useToast } from "@/hooks/useToast";
 import {
   addItem,

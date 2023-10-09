@@ -1,8 +1,8 @@
 import Tag from "@/components/Tag";
 import { ProductFilterType } from "@/models/Types";
-import { ProductPageContext } from "@/features/products/contexts/ProductsPageContext";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React from "react";
+import { useProductPageContext } from "../hooks/useProductPageContext";
 
 type TagType = {
   dropdown: string;
@@ -31,7 +31,7 @@ const getAvailableFilterTags = (filtersData: {
 };
 
 export default function CurrentFilters() {
-  const { filtersData } = useContext(ProductPageContext);
+  const { filtersData } = useProductPageContext();
 
   const router = useRouter();
 

@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import germany from "@/assets/images/countries/germany.png";
 import Image from "next/image";
-import { Verify, Language, Love } from "@/components/icons/Index";
+import { Verify, Language, Love } from "@/components/icons";
 import PrimaryButton from "@/components/button/PrimaryButton";
 import LightButton from "@/components/button/LightButton";
+import { useActionCart } from "@/features/cart";
+import { SingleProductContext } from "../../contexts/SingleProductContext";
 
 type Props = {
   className: string;
 };
 
 export default function ProductAction({ className }: Props) {
+  const { add } = useActionCart();
+  const { product } = useContext(SingleProductContext);
+
+  const addToCartHandler = () => {
+    add(product);
+  };
+
   return (
     <div className={className}>
       <div className="rounded border p-4">
@@ -35,7 +44,11 @@ export default function ProductAction({ className }: Props) {
           </div>
         </div>
         <div className="mt-8 space-y-2">
-          <PrimaryButton title="Send inquiry" customClass="block w-full" />
+          <PrimaryButton
+            title="Add To Cart"
+            customClass="block w-full"
+            onClick={addToCartHandler}
+          />
           <LightButton
             title="Seller’s profile"
             customClass="block w-full text-blue-700"

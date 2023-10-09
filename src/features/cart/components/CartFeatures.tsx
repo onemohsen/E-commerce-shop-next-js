@@ -1,4 +1,4 @@
-import { Cart, Lock, Message } from "@/components/icons/Index";
+import { Cart, Lock, Message } from "@/components/icons";
 import React from "react";
 
 type FeatureProps = {

@@ -1,5 +1,5 @@
-import { Cart as CartIcon } from "@/components/icons/Index";
-import { useAppSelector } from "@/useStore";
+import { Cart as CartIcon } from "@/components/icons";
+import { useAppSelector } from "@/hooks/useStore";
 import Link from "next/link";
 import React, { FC } from "react";
 

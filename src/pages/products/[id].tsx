@@ -13,7 +13,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 import React from "react";
 
-export default function Index({
+export default function SinglePage({
   product,
   youMayLikeProducts,
   relatedProducts,

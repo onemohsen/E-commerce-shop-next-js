@@ -1,5 +1,6 @@
-import { Love } from "@/components/icons/Index";
+import { Love, Cart } from "@/components/icons";
 import RateBox from "@/components/products/RateBox";
+import { useActionCart } from "@/features/cart";
 import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,12 @@ type Props = {
 };
 
 export default function ProductListCard({ item }: Props) {
+  const { add } = useActionCart();
+
+  const addToCartHandler = () => {
+    add(item);
+  };
+
   return (
     <div className="flex">
       <div className="flex w-3/12 justify-center">
@@ -25,10 +32,18 @@ export default function ProductListCard({ item }: Props) {
       <div className="w-9/12 ">
         <div className="flex justify-between">
           <h2>{item.title}</h2>
-          <Love
-            className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
-            isFill={false}
-          />
+          <div className="flex space-x-1">
+            <Love
+              className="h-10 w-10 rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
+              isFill={false}
+            />
+            <button onClick={addToCartHandler}>
+              <Cart
+                className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
+                isFill={false}
+              />
+            </button>
+          </div>
         </div>
         <div className="space-y-2">
           <span className="text-xl font-bold">${item.price}</span>

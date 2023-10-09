@@ -1,5 +1,6 @@
-import { Love } from "@/components/icons/Index";
+import { Love, Cart } from "@/components/icons";
 import RateBox from "@/components/products/RateBox";
+import { useActionCart } from "@/features/cart";
 import { ProductType } from "@/models/Product";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,12 @@ type Props = {
 };
 
 export default function ProductGridCard({ item }: Props) {
+  const { add } = useActionCart();
+
+  const addToCartHandler = () => {
+    add(item);
+  };
+
   return (
     <div className="flex h-full w-full">
       <div className="mx-5 flex w-full flex-col ">
@@ -35,10 +42,18 @@ export default function ProductGridCard({ item }: Props) {
               )}
               <RateBox score={item.rate ?? 0} />
             </div>
-            <Love
-              className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
-              isFill={false}
-            />
+            <div className="flex space-x-1">
+              <Love
+                className="h-10 w-10  rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
+                isFill={false}
+              />
+              <button onClick={addToCartHandler}>
+                <Cart
+                  className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
+                  isFill={false}
+                />
+              </button>
+            </div>
           </div>
           <h2 className="text-gray-700">{item.title}</h2>
         </div>

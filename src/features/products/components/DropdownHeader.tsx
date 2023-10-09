@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowDown, ArrowUp } from "@/components/icons/Index";
+import { ArrowDown, ArrowUp } from "@/components/icons";
 
 type Props = {
   header: string;

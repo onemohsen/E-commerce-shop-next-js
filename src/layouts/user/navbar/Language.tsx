@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowDown } from "@/components/icons/Index";
+import { ArrowDown } from "@/components/icons";
 import Image from "next/image";
 import germany from "@/assets/images/countries/germany.png";
 

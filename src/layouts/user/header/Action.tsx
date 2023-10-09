@@ -1,4 +1,4 @@
-import { Message, Order, Profile } from "@/components/icons/Index";
+import { Message, Order, Profile } from "@/components/icons";
 import React from "react";
 import Cart from "./actions/Cart";
 

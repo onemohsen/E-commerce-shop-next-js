@@ -2,7 +2,7 @@ import BoxWrapper from "@/components/wrapper/BoxWrapper";
 import React from "react";
 import CartItem from "./CartItem";
 import PrimaryButton from "@/components/button/PrimaryButton";
-import { ArrowLeft } from "@/components/icons/Index";
+import { ArrowLeft } from "@/components/icons";
 import LightButton from "@/components/button/LightButton";
 import CartCoupon from "./CartCoupon";
 import CartCheckout from "./CartCheckout";

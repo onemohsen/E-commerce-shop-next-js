@@ -1,5 +1,5 @@
 import UserLayout from "@/layouts/user/UserLayout";
-import { store } from "@/store";
+import { store } from "@/state/store";
 import "@/styles/globals.css";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";

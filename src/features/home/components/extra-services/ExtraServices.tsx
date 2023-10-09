@@ -1,7 +1,7 @@
 import React from "react";
 
 // import Search from "@/features/index/extra-services/icons/Search";
-import { Search, Inventory, Send, Security } from "@/components/icons/Index";
+import { Search, Inventory, Send, Security } from "@/components/icons";
 
 import image104 from "@/assets/images/home/services/image 104.jpg";
 import image106 from "@/assets/images/home/services/image 106.jpg";
