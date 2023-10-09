@@ -22,7 +22,7 @@ const categories: Category[] = [
   { id: 9, name: "More category", image: "https://picsum.photos/id/9/900" },
 ];
 
-export default function CategoriesSlide() {
+export function CategoriesSlide() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const activeCategoryClass = (categoryId: number) => {
@@ -70,7 +70,7 @@ export default function CategoriesSlide() {
           height={1200}
           alt={activeCategory.name}
         />
-        <div className="absolute top-12 left-10">
+        <div className="absolute left-10 top-12">
           <div className="rounded bg-white bg-opacity-20 p-5 text-lg">
             <p>Latest trending</p>
             <p className="text-xl font-bold">{activeCategory.name}</p>

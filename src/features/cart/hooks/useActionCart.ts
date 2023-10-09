@@ -7,7 +7,7 @@ import {
   removeAllItems,
   removeItem,
   updateQuentity as updateQuantitySlicer,
-} from "../cartSlice";
+} from "../store/cartSlice";
 
 const useActionCart = () => {
   const { showToast } = useToast();

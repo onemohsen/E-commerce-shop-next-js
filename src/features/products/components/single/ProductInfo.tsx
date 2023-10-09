@@ -1,7 +1,7 @@
 import { Check, Message, ShopingBasket } from "@/components/icons/Index";
 import StarIconBox from "@/components/products/RateBox";
 import React, { useContext } from "react";
-import { SingleProductContext } from "../contexts/SingleProductContext";
+import { SingleProductContext } from "../../contexts/SingleProductContext";
 
 type Props = {
   className: string;

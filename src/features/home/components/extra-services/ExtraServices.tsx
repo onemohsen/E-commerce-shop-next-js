@@ -7,10 +7,10 @@ import image104 from "@/assets/images/home/services/image 104.jpg";
 import image106 from "@/assets/images/home/services/image 106.jpg";
 import image107 from "@/assets/images/home/services/image 107.jpg";
 import image108 from "@/assets/images/home/services/image 108.jpg";
-import { ExtraServiceType } from "@/features/index/extra-services/ExtraServiceType";
-import ExtraService from "./ExtraService";
+import type { ExtraServiceType } from "./ExtraServiceType";
+import { ExtraService } from "./ExtraService";
 
-export default function ExtraServices() {
+export function ExtraServices() {
   const services: ExtraServiceType[] = [
     {
       image: image104,

@@ -36,7 +36,7 @@ const ProductsList = ({ products }: Props) => {
   );
 };
 
-export default function FilterContent({ products, productsPaginate }: Props) {
+export function FilterContent({ products, productsPaginate }: Props) {
   const [isGridView, setIsGridView] = useState(true);
 
   return (

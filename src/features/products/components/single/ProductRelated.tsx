@@ -8,7 +8,7 @@ type Props = {
   className?: string;
 };
 
-export default function ProductRelated({ products, className }: Props) {
+export function ProductRelated({ products, className }: Props) {
   return (
     <BoxWrapper className={className} title="Related products">
       <div className="flex flex-wrap ">

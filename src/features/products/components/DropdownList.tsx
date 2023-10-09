@@ -21,7 +21,7 @@ const ListItem = ({ item, selectedList, onClickHandler }: ListItemProps) => {
 
   return (
     <li
-      className={`cursor-pointer py-1.5 px-1 hover:bg-blue-100 ${activeItemClass}`}
+      className={`cursor-pointer px-1 py-1.5 hover:bg-blue-100 ${activeItemClass}`}
       onClick={(event) => onClickHandler(event)}
       value={item.id}
     >

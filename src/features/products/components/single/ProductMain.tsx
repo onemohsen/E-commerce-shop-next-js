@@ -4,7 +4,7 @@ import ProductInfo from "./ProductInfo";
 import ProductAction from "./ProductAction";
 import BoxWrapper from "@/components/wrapper/BoxWrapper";
 
-export default function ProductMain() {
+export function ProductMain() {
   return (
     <BoxWrapper className="grid grid-cols-12 gap-5">
       <ProductImage className="col-span-4 flex flex-col items-center justify-self-start" />

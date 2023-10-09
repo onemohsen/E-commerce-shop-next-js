@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useContext } from "react";
-import { SingleProductContext } from "../contexts/SingleProductContext";
+import { SingleProductContext } from "../../contexts/SingleProductContext";
 
 type Props = {
   className: string;

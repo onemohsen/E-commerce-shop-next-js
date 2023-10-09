@@ -14,7 +14,7 @@ type OfferProduct = ProductType & {
 
 const today = new Date();
 
-export default function DealsOffers({ className }: Props) {
+export function DealsOffers({ className }: Props) {
   const offerProducts: OfferProduct[] = [
     {
       id: 1,
@@ -58,10 +58,9 @@ export default function DealsOffers({ className }: Props) {
     },
   ];
 
-  const CountDownComponent = dynamic(
-    () => import("@/features/index/deals-offers/CountDown"),
-    { ssr: false },
-  );
+  const CountDownComponent = dynamic(() => import("./CountDown"), {
+    ssr: false,
+  });
 
   let fiveDaysLater = new Date(today);
   fiveDaysLater.setDate(today.getDate() + 5);

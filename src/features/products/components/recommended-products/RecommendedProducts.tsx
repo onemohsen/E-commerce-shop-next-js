@@ -2,7 +2,7 @@ import React from "react";
 import { ProductType } from "@/models/Product";
 import CardItems from "./CardItems";
 
-function RecommendedProducts() {
+export function RecommendedProducts() {
   const items: ProductType[] = [
     {
       id: 1,
@@ -93,5 +93,3 @@ function RecommendedProducts() {
     </div>
   );
 }
-
-export default RecommendedProducts;

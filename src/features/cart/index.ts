@@ -2,6 +2,7 @@
 export { default as useCart } from "./hooks/useStateCart";
 
 // store
+export { default as cartReducer } from "./store/cartSlice";
 
 // components
 export { default as CartBox } from "./components/CartBox";

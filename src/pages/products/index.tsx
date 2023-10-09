@@ -7,14 +7,14 @@ import { BreadcrumbsType, MetaPaginate } from "@/models/Types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
-import FilterSidebar from "@/features/products/index/FilterSidebar";
-import FilterContent from "@/features/products/index/FilterContent";
-import { Category } from "@/models/Category";
-import { Brand } from "@/models/Brand";
 import {
+  FilterSidebar,
+  FilterContent,
   ProductPageContext,
   initFiltersData,
-} from "@/features/products/contexts/ProductsPageContext";
+} from "@/features/products";
+import { Category } from "@/models/Category";
+import { Brand } from "@/models/Brand";
 
 type ServerProps = {
   products: ProductType[];

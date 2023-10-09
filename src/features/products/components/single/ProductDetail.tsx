@@ -50,7 +50,7 @@ const Li = ({ title, isActive, clickHandler }: LiType) => {
   );
 };
 
-export default function ProductDetail({ className }: Props) {
+export function ProductDetail({ className }: Props) {
   const [activeTab, setActiveTab] = useState(`Description`);
 
   return (

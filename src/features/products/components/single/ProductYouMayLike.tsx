@@ -8,7 +8,7 @@ type Props = {
   items: ProductType[];
 };
 
-export default function ProductYouMayLike({ className, items }: Props) {
+export function ProductYouMayLike({ className, items }: Props) {
   return (
     <BoxWrapper className={className} title="You may like">
       <div className="space-y-5">

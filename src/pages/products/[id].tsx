@@ -1,10 +1,12 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContainerWrapper from "@/components/wrapper/ContainerWrapper";
-import { SingleProductContext } from "@/features/products/contexts/SingleProductContext";
-import ProductDetail from "@/features/products/single/ProductDetail";
-import ProductMain from "@/features/products/single/ProductMain";
-import ProductRelated from "@/features/products/single/ProductRelated";
-import ProductYouMayLike from "@/features/products/single/ProductYouMayLike";
+import {
+  SingleProductContext,
+  ProductDetail,
+  ProductMain,
+  ProductRelated,
+  ProductYouMayLike,
+} from "@/features/products";
 import { Product, ProductType } from "@/models/Product";
 import { BreadcrumbsType } from "@/models/Types";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";

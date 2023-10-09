@@ -2,7 +2,7 @@ import React from "react";
 import Form from "./Form";
 import backgroundImage from "@/assets/images/bg-card.jpg";
 
-export default function RequestSupplier() {
+export function RequestSupplier() {
   return (
     <div
       className="relative"

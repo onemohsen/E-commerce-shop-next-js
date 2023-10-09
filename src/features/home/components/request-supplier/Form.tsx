@@ -2,9 +2,11 @@ import PrimaryButton from "@/components/button/PrimaryButton";
 import { useToast } from "@/hooks/useToast";
 import React from "react";
 
-import { Formik, FormikErrors, FormikHelpers, Form as Formk } from "formik";
+import { Formik, Form as FormikForm } from "formik";
 import * as Yup from "yup";
 import FieldFormik from "@/components/formik/FieldFormik";
+
+import type { FormikErrors, FormikHelpers } from "formik";
 
 interface RequestSupplierFormInterface {
   description: string;
@@ -67,7 +69,7 @@ export default function Form() {
       validationSchema={validationSchema}
     >
       {({ errors }) => (
-        <Formk className="flex flex-col  space-y-6 rounded bg-white p-8">
+        <FormikForm className="flex flex-col  space-y-6 rounded bg-white p-8">
           <span>Send quote to suppliers</span>
           {showErrorMessages(errors)}
           <FieldFormik
@@ -115,7 +117,7 @@ export default function Form() {
             type="submit"
             disabled={Object.keys(errors).length > 0}
           />
-        </Formk>
+        </FormikForm>
       )}
     </Formik>
   );

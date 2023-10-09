@@ -2,7 +2,8 @@ import LightButton from "@/components/button/LightButton";
 import FieldFormik from "@/components/formik/FieldFormik";
 import BoxWrapper from "@/components/wrapper/BoxWrapper";
 import { useToast } from "@/hooks/useToast";
-import { Form, Formik, FormikErrors, FormikHelpers } from "formik";
+import { Form, Formik } from "formik";
+import type { FormikErrors, FormikHelpers } from "formik";
 import React from "react";
 import * as Yup from "yup";
 

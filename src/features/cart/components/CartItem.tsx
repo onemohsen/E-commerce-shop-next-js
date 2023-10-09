@@ -30,11 +30,11 @@ export default function CartItem({
             <div className="mt-2 flex space-x-2">
               <button
                 onClick={() => removeHandler(item.id)}
-                className="rounded-md border border-b border-zinc-200 bg-white py-1 px-2.5 text-center text-xs font-medium text-red-500 shadow"
+                className="rounded-md border border-b border-zinc-200 bg-white px-2.5 py-1 text-center text-xs font-medium text-red-500 shadow"
               >
                 Remove
               </button>
-              <button className="rounded-md border border-zinc-200 bg-white py-1  px-2.5 text-center text-xs font-medium text-blue-600 shadow">
+              <button className="rounded-md border border-zinc-200 bg-white px-2.5  py-1 text-center text-xs font-medium text-blue-600 shadow">
                 Save for later
               </button>
             </div>
