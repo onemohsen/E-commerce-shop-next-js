@@ -1,14 +1,15 @@
 import makeQueryParams from "@/utils/makeQueryParams";
 import { Product } from "./Product";
 
-type ParamsType = {
+export type ParamsType = {
   paginate?: boolean;
   limit?: number;
   filter?: {
     [key: string]: any;
   };
-} & {
-  [key: string]: string;
+  param?: {
+    [key: string]: string;
+  };
 };
 export class Model {
   public query: string = "";
@@ -66,6 +67,12 @@ export class Model {
     return this;
   }
 
+  public param(obj: { [key: string]: string }) {
+    this.params.param = obj;
+
+    return this;
+  }
+
   public whereIn(field: string, value: string[] | number[]) {
     let array = value.join(",");
 
@@ -77,14 +84,7 @@ export class Model {
     return this;
   }
 
-  public whereRelation(relation: string, value: number[]) {
-    let array = value.join(",");
-    this.params[relation] = array;
-
-    return this;
-  }
-
-  private generateUrl(): string {
+  public generateUrl(): string {
     this.query = makeQueryParams(this.params);
     let url = `${this.baseURL()}/${this.resource()}${this.query}`;
     return url;

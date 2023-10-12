@@ -78,11 +78,15 @@ export const getStaticProps: GetStaticProps<
     .paginate(false)
     .$get();
 
-  const relatedProducts = await new Product()
-    .whereRelation("categories", product?.categories?.map((c) => c.id) ?? [])
-    .limit(6)
-    .paginate(false)
-    .$get();
+  let queryRelatedProducts = new Product().limit(6).paginate(false);
+
+  if (product?.categories) {
+    queryRelatedProducts.param({
+      ["categories"]: product?.categories?.map((c) => c.id).join(","),
+    });
+  }
+
+  const relatedProducts = await queryRelatedProducts.$get();
 
   if (!product) {
     return {

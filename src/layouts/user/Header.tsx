@@ -6,6 +6,8 @@ import ContainerWrapper from "../../components/wrapper/ContainerWrapper";
 import Link from "next/link";
 
 const Header = () => {
+  // const searchHandler = () => {};
+
   return (
     <ContainerWrapper className="grid h-[5.3rem] content-center">
       <div className="grid grid-cols-3 items-center">

@@ -70,6 +70,12 @@ export class FilterDataClass<T extends { [key: string]: any }> {
           if (typeof this.filters[filterKey] == "object") {
             return this.filters[filterKey].includes(data[filterKey].toString());
           }
+
+          if (this.filters[filterKey].startsWith("%")) {
+            const valueWithoutPercent = this.filters[filterKey].slice(1);
+            return data[filterKey].includes(valueWithoutPercent);
+          }
+
           return data[filterKey] == this.filters[filterKey];
         });
       });
