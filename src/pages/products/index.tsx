@@ -12,9 +12,12 @@ import {
   FilterContent,
   ProductPageContext,
   initFiltersData,
+  getList as getProducts,
 } from "@/features/products";
 import { Category } from "@/models/Category";
 import { Brand } from "@/models/Brand";
+import { getList as getCategories } from "@/features/categories";
+import { getList as getBrands } from "@/features/brands";
 
 type ServerProps = {
   products: ProductType[];
@@ -85,12 +88,10 @@ export const getServerSideProps: GetServerSideProps<ServerProps> = async ({
 }) => {
   const queryString = makeQueryParams(query);
 
-  const baseUrl = process.env.BASE_API_URL || "http://localhost:3000/api";
-
   const [productsRes, categoroesRes, brandsRes] = await Promise.all([
-    fetch(`${baseUrl}/products${queryString}`),
-    fetch(`${baseUrl}/categories`),
-    fetch(`${baseUrl}/brands`),
+    getProducts(queryString),
+    getCategories(),
+    getBrands(),
   ]);
 
   const [products, categories, brands] = await Promise.all([

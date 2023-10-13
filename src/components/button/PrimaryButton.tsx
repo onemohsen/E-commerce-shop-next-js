@@ -1,13 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, HtmlHTMLAttributes } from "react";
 import BaseButton from "./BaseButton";
 
-interface PropsInterface {
+type PropsInterface = {
   title?: string;
   customClass?: string;
   onClick?: () => void;
   children?: React.ReactNode;
   [k: string]: any;
-}
+} & HtmlHTMLAttributes<HTMLButtonElement>;
 
 const PrimaryButton: FC<PropsInterface> = ({
   title,
@@ -16,7 +16,7 @@ const PrimaryButton: FC<PropsInterface> = ({
   children,
   ...rest
 }) => {
-  const primaryclass: string = `bg-primary hover:bg-blue-900 p-2 text-white rounded ${customClass}`;
+  const primaryclass: string = `bg-primary hover:bg-blue-900 p-2 text-white rounded ${customClass} disabled:opacity-50`;
 
   return (
     <BaseButton onClick={onClick} buttonClass={primaryclass} {...rest}>

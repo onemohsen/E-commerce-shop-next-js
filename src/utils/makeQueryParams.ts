@@ -31,6 +31,13 @@ const makeQueryRecursiveFunction = (
   let queryString = defaultValue;
 
   if (typeof value == "object") {
+    if (key == "param") {
+      queryString += Object.keys(value)
+        .map((k) => makeQueryRecursiveFunction(`${k}`, value[k], queryString))
+        .join("&");
+      return queryString;
+    }
+
     queryString += Object.keys(value)
       .map((k) =>
         makeQueryRecursiveFunction(`${key}[${k}]`, value[k], queryString),

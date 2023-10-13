@@ -8,16 +8,16 @@ import Link from "next/link";
 const Header = () => {
   return (
     <ContainerWrapper className="grid h-[5.3rem] content-center">
-      <div className="grid grid-cols-3 items-center">
-        <div className="flex justify-start">
+      <div className="flex">
+        <div className="flex w-1/3 justify-start">
           <Link href={{ pathname: "/" }}>
             <Logo width={150} />
           </Link>
         </div>
-        <div className="flex justify-center">
+        <div className="flex flex-1 justify-center">
           <SearchBar />
         </div>
-        <div className="flex justify-end">
+        <div className="flex w-1/3 justify-end">
           <Action />
         </div>
       </div>
