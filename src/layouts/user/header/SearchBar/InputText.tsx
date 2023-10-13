@@ -24,7 +24,7 @@ export default function InputText({ name, children }: Props) {
           {error}
         </span>
       )}
-      <div className="absolute">{children}</div>
+      <div className="absolute z-10">{children}</div>
     </div>
   );
 }
