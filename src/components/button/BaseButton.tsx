@@ -1,11 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, HtmlHTMLAttributes } from "react";
 
-interface PropsInterface {
+type PropsInterface = {
   children: React.ReactNode;
   buttonClass?: string;
-  onClick?: () => void;
   [k: string]: any;
-}
+} & HtmlHTMLAttributes<HTMLButtonElement>;
 
 const BaseButton: FC<PropsInterface> = ({
   buttonClass,

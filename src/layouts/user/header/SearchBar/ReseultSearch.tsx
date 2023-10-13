@@ -1,15 +1,32 @@
 import { ProductType } from "@/models/Product";
 import Link from "next/link";
+import LoadingShape from "./LoadingShape";
 
 type Props = {
   products: ProductType[];
+  loading?: boolean;
   itemClickHandler: (id: number) => void;
 };
 
-export default function ReseultSearch({ products, itemClickHandler }: Props) {
+const rootDivClassName =
+  "flex max-h-72 w-[263px] transform flex-col justify-between  overflow-y-auto rounded border bg-white pl-2 pr-4 pt-2 shadow-lg";
+
+export default function ReseultSearch({
+  products,
+  loading = false,
+  itemClickHandler,
+}: Props) {
+  if (loading) {
+    return (
+      <div className={rootDivClassName}>
+        <LoadingShape />
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="flex max-h-72 w-[263px] transform flex-col justify-between  overflow-y-auto rounded border bg-white pl-2 pr-4 pt-2 shadow-lg">
+      <div className={rootDivClassName}>
         <div className="mb-3 space-y-2 overflow-y-auto overflow-x-hidden">
           {products.map((product) => (
             <Link

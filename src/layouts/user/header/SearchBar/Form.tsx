@@ -4,15 +4,17 @@ import type { ProductType } from "@/models/Product";
 import type { SearchFormType } from "@/utils/form/HeaderSearchForm";
 import { formSchema, formValues } from "@/utils/form/HeaderSearchForm";
 import { Formik, Form as FormikForm } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CategorySelectBox from "./CategorySelectBox";
 import InputText from "./InputText";
 import ReseultSearch from "./ReseultSearch";
 import type { ParamsType } from "@/models/Model";
 import useComponentVisible from "@/hooks/useComponentVisible";
+import { useFakeSleep } from "@/hooks/useFakeSleep";
 
 const Form = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const { sleep } = useFakeSleep();
   const {
     ref: refResults,
     isComponentVisible: showResults,
@@ -20,6 +22,8 @@ const Form = () => {
   } = useComponentVisible(false);
 
   const submitForm = async (values: SearchFormType) => {
+    setShowResults(true);
+
     const queryParams: ParamsType = {
       filter: {
         ["title"]: `%${values.search}`,
@@ -32,12 +36,10 @@ const Form = () => {
     const response = await getListModel(queryParams);
     const { data } = await response.json();
 
+    await sleep(500);
     setProducts(data);
     setShowResults(true);
-    console.log("form submited", values, data);
   };
-
-  useEffect(() => console.log("Form re-render"));
 
   return (
     <div ref={refResults}>
@@ -46,23 +48,27 @@ const Form = () => {
         validationSchema={formSchema}
         onSubmit={submitForm}
       >
-        <FormikForm className="flex">
-          <InputText name="search">
-            {showResults && (
-              <ReseultSearch
-                products={products}
-                itemClickHandler={() => setShowResults(false)}
-              />
-            )}
-          </InputText>
+        {({ isSubmitting }) => (
+          <FormikForm className="flex">
+            <InputText name="search">
+              {showResults && (
+                <ReseultSearch
+                  loading={isSubmitting}
+                  products={products}
+                  itemClickHandler={() => setShowResults(false)}
+                />
+              )}
+            </InputText>
 
-          <CategorySelectBox name="category" />
-          <PrimaryButton
-            title="Search"
-            customClass="px-5 py-1.5 rounded-l-none rounded-r-lg"
-            type="submit"
-          />
-        </FormikForm>
+            <CategorySelectBox name="category" />
+            <PrimaryButton
+              title="Search"
+              customClass={` px-5 py-1.5 rounded-l-none rounded-r-lg `}
+              type="submit"
+              disabled={isSubmitting}
+            />
+          </FormikForm>
+        )}
       </Formik>
     </div>
   );
