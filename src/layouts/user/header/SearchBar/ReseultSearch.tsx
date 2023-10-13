@@ -9,7 +9,7 @@ type Props = {
 };
 
 const rootDivClassName =
-  "flex max-h-72 w-[263px] transform flex-col justify-between  overflow-y-auto rounded border bg-white pl-2 pr-4 pt-2 shadow-lg";
+  "flex max-h-72 w-[265px] transform flex-col justify-between  overflow-y-auto rounded border bg-white pl-2 pt-2 shadow-lg";
 
 export default function ReseultSearch({
   products,

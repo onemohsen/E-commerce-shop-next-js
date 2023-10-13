@@ -72,8 +72,11 @@ export class FilterDataClass<T extends { [key: string]: any }> {
           }
 
           if (this.filters[filterKey].startsWith("%")) {
-            const valueWithoutPercent = this.filters[filterKey].slice(1);
-            return data[filterKey].includes(valueWithoutPercent);
+            const valueWithoutPercent = this.filters[filterKey]
+              .toLowerCase()
+              .slice(1);
+
+            return data[filterKey].toLowerCase().includes(valueWithoutPercent);
           }
 
           return data[filterKey] == this.filters[filterKey];

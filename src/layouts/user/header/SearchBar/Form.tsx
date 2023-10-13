@@ -30,6 +30,7 @@ const Form = () => {
       },
       param: {
         ...(values.category !== "0" ? { ["categories"]: values.category } : {}),
+        paginate: "false",
       },
     };
 
