@@ -43,6 +43,7 @@ export default function CartBox() {
           <LightButton
             title="Remove all"
             customClass="text-blue-500 px-5 font-medium rounded-md"
+            disabled={!items.length}
             onClick={removeAll}
           />
         </div>

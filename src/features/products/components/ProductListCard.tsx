@@ -38,10 +38,7 @@ export default function ProductListCard({ item }: Props) {
               isFill={false}
             />
             <button onClick={addToCartHandler}>
-              <Cart
-                className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900"
-                isFill={false}
-              />
+              <Cart className="h-10 w-10 cursor-pointer rounded border fill-current p-1.5 text-blue-600 hover:text-blue-900" />
             </button>
           </div>
         </div>

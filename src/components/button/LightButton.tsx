@@ -1,22 +1,22 @@
-import React, { FC } from "react";
+import type { FC, HtmlHTMLAttributes, ReactNode } from "react";
 import BaseButton from "./BaseButton";
 
-interface PropsInterface {
+type Props = {
   title?: string;
   customClass?: string;
   onClick?: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
   [k: string]: any;
-}
+} & HtmlHTMLAttributes<HTMLButtonElement>;
 
-const LightButton: FC<PropsInterface> = ({
+const LightButton: FC<Props> = ({
   title,
   onClick,
   customClass,
   children,
   ...rest
 }) => {
-  const primaryclass: string = `bg-white hover:bg-gray-200 p-2 border  rounded ${customClass}`;
+  const primaryclass: string = `bg-white hover:bg-gray-200 p-2 border  rounded ${customClass} disabled:opacity-50`;
 
   return (
     <BaseButton onClick={onClick} buttonClass={primaryclass} {...rest}>

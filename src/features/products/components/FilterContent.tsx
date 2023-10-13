@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductListCard from "./ProductListCard";
 import ProductGridCard from "./ProductGridCard";
 import FilterHeader from "./FilterHeader";
 import Paginate from "@/components/Paginate";
 import CurrentFilters from "./CurrentFilters";
 import { useProductPageContext } from "../hooks/useProductPageContext";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const ProductsGrid = () => {
   const { products } = useProductPageContext();
@@ -34,15 +35,30 @@ const ProductsList = () => {
   );
 };
 
+const PRODUCT_VIEW_STORAGE_KEY = "products-is-grid-view";
+
 export function FilterContent() {
-  const [isGridView, setIsGridView] = useState(true);
+  const [isGridView, setIsGridView] = useState<boolean>(true);
   const { paginate } = useProductPageContext();
+  const { set, get } = useLocalStorage();
+
+  if (!get(PRODUCT_VIEW_STORAGE_KEY)) {
+    set(PRODUCT_VIEW_STORAGE_KEY, isGridView);
+  }
+
+  useEffect(() => {
+    const gridviewStorage = get(PRODUCT_VIEW_STORAGE_KEY) !== "false";
+    setIsGridView(gridviewStorage);
+  }, [get]);
 
   return (
     <div className="w-4/5 px-5">
       <FilterHeader
         isGrid={isGridView}
-        onViewClickHandler={(isGrid) => setIsGridView(isGrid)}
+        onViewClickHandler={(isGrid) => {
+          setIsGridView(isGrid);
+          set(PRODUCT_VIEW_STORAGE_KEY, isGrid);
+        }}
         total={paginate?.total}
       />
 
