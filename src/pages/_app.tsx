@@ -1,6 +1,7 @@
+import "@/assets/styles/globals.css";
+import { ProgressBar } from "@/features/tools/nProgress";
 import UserLayout from "@/layouts/user/UserLayout";
 import { store } from "@/state/store";
-import "@/styles/globals.css";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
@@ -17,14 +18,23 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? null;
+const ShareComponent = ({ Component, pageProps }: AppPropsWithLayout) => {
+  return (
+    <>
+      <ProgressBar />
+      <Component {...pageProps} />
+      <ToastContainer />
+    </>
+  );
+};
+
+export default function App(props: AppPropsWithLayout) {
+  const getLayout = props.Component.getLayout ?? null;
 
   if (getLayout) {
     return getLayout(
       <Provider store={store}>
-        <Component {...pageProps} />
-        <ToastContainer />
+        <ShareComponent {...props} />
       </Provider>,
     );
   }
@@ -32,8 +42,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <Provider store={store}>
       <UserLayout>
-        <Component {...pageProps} />
-        <ToastContainer />
+        <ShareComponent {...props} />
       </UserLayout>
     </Provider>
   );

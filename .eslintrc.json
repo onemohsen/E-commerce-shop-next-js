@@ -16,7 +16,11 @@
         "zones": [
           {
             "target": ["./!(features)/**/*", "./!(features)*"],
-            "from": ["./features/*/!(index.*)", "./features/*/!(index.*)/**/*"],
+            "from": [
+              "./features/*/!(index.*)",
+              "./features/tools/*/!(index.*)/**/*",
+              "./features/!(tools)/!(index.*)/**/*"
+            ],
             "except": ["./features/*/index.*", "./features/*"],
             "message": "cannot import anything except the index file within a feature folder"
           }

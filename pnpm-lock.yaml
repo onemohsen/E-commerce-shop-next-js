@@ -32,6 +32,9 @@ dependencies:
   next:
     specifier: 13.1.6
     version: 13.1.6(react-dom@18.2.0)(react@18.2.0)
+  nprogress:
+    specifier: ^0.2.0
+    version: 0.2.0
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -52,6 +55,9 @@ dependencies:
     version: 1.3.2
 
 devDependencies:
+  '@types/nprogress':
+    specifier: ^0.2.1
+    version: 0.2.1
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.1.0
     version: 6.7.4(@typescript-eslint/parser@6.7.4)(eslint@8.34.0)(typescript@4.9.5)
@@ -386,6 +392,10 @@ packages:
   /@types/node@18.14.0:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: false
+
+  /@types/nprogress@0.2.1:
+    resolution: {integrity: sha512-TYuyVnp+nOnimgdOydDIDYIxv2kSeuJZw4tF0p/KG7hpzcMF1WkHaREwM8O4blqfT1F7rq0nht6Ko2KVUfWzBA==}
+    dev: true
 
   /@types/prop-types@15.7.8:
     resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==}
@@ -2258,6 +2268,10 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
+
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
